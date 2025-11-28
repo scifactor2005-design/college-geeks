@@ -1,0 +1,46 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f5f3ff"/>
+  
+  <!-- Input Layer -->
+  <circle cx="100" cy="100" r="20" fill="#a78bfa" stroke="#7c3aed" stroke-width="2"/>
+  <circle cx="100" cy="200" r="20" fill="#a78bfa" stroke="#7c3aed" stroke-width="2"/>
+  <circle cx="100" cy="300" r="20" fill="#a78bfa" stroke="#7c3aed" stroke-width="2"/>
+  <text x="100" y="350" text-anchor="middle" fill="#5b21b6" font-size="14">Input</text>
+
+  <!-- Hidden Layer 1 -->
+  <circle cx="300" cy="80" r="20" fill="#c084fc" stroke="#9333ea" stroke-width="2"/>
+  <circle cx="300" cy="160" r="20" fill="#c084fc" stroke="#9333ea" stroke-width="2"/>
+  <circle cx="300" cy="240" r="20" fill="#c084fc" stroke="#9333ea" stroke-width="2"/>
+  <circle cx="300" cy="320" r="20" fill="#c084fc" stroke="#9333ea" stroke-width="2"/>
+  <text x="300" y="370" text-anchor="middle" fill="#6b21a8" font-size="14">Hidden 1</text>
+
+  <!-- Hidden Layer 2 -->
+  <circle cx="500" cy="80" r="20" fill="#e879f9" stroke="#c026d3" stroke-width="2"/>
+  <circle cx="500" cy="160" r="20" fill="#e879f9" stroke="#c026d3" stroke-width="2"/>
+  <circle cx="500" cy="240" r="20" fill="#e879f9" stroke="#c026d3" stroke-width="2"/>
+  <circle cx="500" cy="320" r="20" fill="#e879f9" stroke="#c026d3" stroke-width="2"/>
+  <text x="500" y="370" text-anchor="middle" fill="#86198f" font-size="14">Hidden 2</text>
+
+  <!-- Output Layer -->
+  <circle cx="700" cy="150" r="20" fill="#f472b6" stroke="#db2777" stroke-width="2"/>
+  <circle cx="700" cy="250" r="20" fill="#f472b6" stroke="#db2777" stroke-width="2"/>
+  <text x="700" y="300" text-anchor="middle" fill="#9d174d" font-size="14">Output</text>
+
+  <!-- Connections (simplified) -->
+  <path d="M 120 100 L 280 80" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 120 100 L 280 160" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 120 200 L 280 160" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 120 200 L 280 240" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 120 300 L 280 240" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 120 300 L 280 320" stroke="#cbd5e1" stroke-width="1"/>
+
+  <path d="M 320 80 L 480 80" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 320 160 L 480 160" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 320 240 L 480 240" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 320 320 L 480 320" stroke="#cbd5e1" stroke-width="1"/>
+
+  <path d="M 520 80 L 680 150" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 520 160 L 680 150" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 520 240 L 680 250" stroke="#cbd5e1" stroke-width="1"/>
+  <path d="M 520 320 L 680 250" stroke="#cbd5e1" stroke-width="1"/>
+</svg>

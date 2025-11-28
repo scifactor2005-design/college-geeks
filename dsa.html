@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures & Algorithms - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('dsa_banner.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: var(--link-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg" aria-hidden="true"></div>
+
+    <nav class="navbar" aria-label="Main navigation">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html" class="active">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Data Structures & Algorithms</h1>
+        <p>Master the fundamental building blocks of computer science.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Introduction</h2>
+        <p>Data Structures and Algorithms (DSA) is the core of computer science. It deals with how data is organized,
+            stored, and processed efficiently. Understanding DSA is crucial for writing optimized code and solving
+            complex computational problems.</p>
+        <img src="dsa_diagram.png" alt="DSA Overview Diagram">
+    </div>
+
+    <div class="content-section">
+        <h2>Arrays & Strings</h2>
+        <p>Arrays are the simplest data structure, storing elements in contiguous memory locations. Strings are
+            sequences of characters. Mastering these involves understanding memory management, indexing, and common
+            algorithms like sliding window and two-pointer techniques.</p>
+        <ul>
+            <li><strong>Time Complexity:</strong> Access O(1), Search O(n), Insertion/Deletion O(n)</li>
+            <li><strong>Applications:</strong> Storing data, text processing, buffering.</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Linked Lists</h2>
+        <p>A linked list is a linear data structure where elements are stored in nodes, and each node points to the next
+            one. Unlike arrays, they do not require contiguous memory.</p>
+        <ul>
+            <li><strong>Types:</strong> Singly Linked List, Doubly Linked List, Circular Linked List.</li>
+            <li><strong>Advantages:</strong> Dynamic size, easy insertion/deletion.</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Stacks & Queues</h2>
+        <p>Stacks follow the LIFO (Last In First Out) principle, while Queues follow FIFO (First In First Out). These
+            are essential for managing function calls, expression evaluation, and scheduling tasks.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Trees & Graphs</h2>
+        <p>Non-linear data structures that represent hierarchical (Trees) and networked (Graphs) relationships. Key
+            concepts include Binary Search Trees (BST), AVL Trees, Heaps, BFS, and DFS.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Dynamic Programming</h2>
+        <p>A method for solving complex problems by breaking them down into simpler subproblems. It is used in
+            optimization problems like the Knapsack problem, Fibonacci sequence, and shortest path algorithms.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Reuse the background logic from the main page if needed, or keep it simple
+        (function () {
+            const bg = document.getElementById('dynamic-bg');
+            // Simple static background or reuse the script if we want the slideshow
+            const slides = [
+                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
+                { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
+                { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
+                { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
+            ];
+            let current = 0;
+            function applySlide(i) {
+                const slide = slides[i];
+                bg.style.background = slide.bg;
+                document.documentElement.style.setProperty('--fg', slide.fg);
+                document.documentElement.style.setProperty('--link-color', slide.link);
+            }
+            applySlide(0);
+
+            // Optional: Add slideshow logic here if desired
+        })();
+    </script>
+</body>
+
+</html>

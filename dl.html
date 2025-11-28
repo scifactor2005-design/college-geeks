@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            /* CSS Gradient Banner */
+            background: linear-gradient(135deg, #be185d 0%, #db2777 100%);
+            position: relative;
+            overflow: hidden;
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Abstract tech pattern overlay */
+        .page-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.2rem;
+            color: #fce7f3;
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg" aria-hidden="true"></div>
+
+    <nav class="navbar" aria-label="Main navigation">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html" class="active">Deep Learning</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Deep Learning</h1>
+        <p>Unlocking the power of multi-layered neural networks to solve complex problems.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Introduction</h2>
+        <p>Deep Learning is a specialized subset of Machine Learning inspired by the structure of the human brain. It
+            uses multi-layered artificial neural networks to learn from vast amounts of data.</p>
+        <img src="dl_diagram.svg" alt="Neural Network Architecture Diagram">
+    </div>
+
+    <div class="content-section">
+        <h2>Convolutional Neural Networks (CNNs)</h2>
+        <p>CNNs are designed to process structured grid data, such as images. They use convolutional layers to
+            automatically detect features like edges, textures, and shapes, making them ideal for computer vision.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Recurrent Neural Networks (RNNs)</h2>
+        <p>RNNs are designed for sequential data, such as time series or natural language. They have a "memory" that
+            captures information about what has been calculated so far.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Transformers</h2>
+        <p>Transformers have revolutionized NLP. They use self-attention mechanisms to weigh the significance of
+            different parts of the input data, allowing for parallel processing and handling long-range dependencies.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>Generative Adversarial Networks (GANs)</h2>
+        <p>GANs consist of two networks—a generator and a discriminator—competing against each other. They are used to
+            generate realistic synthetic data, such as images, music, and text.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Backpropagation</h2>
+        <p>The core algorithm for training neural networks. It calculates the gradient of the loss function with respect
+            to the weights, allowing the network to update its parameters and minimize error.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+
+    <script>
+        (function () {
+            const bg = document.getElementById('dynamic-bg');
+            const slides = [
+                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
+                { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
+                { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
+                { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
+            ];
+            let current = 0;
+            function applySlide(i) {
+                const slide = slides[i];
+                bg.style.background = slide.bg;
+                document.documentElement.style.setProperty('--fg', slide.fg);
+                document.documentElement.style.setProperty('--link-color', slide.link);
+            }
+            applySlide(2); // Lavender theme fits well
+        })();
+    </script>
+</body>
+
+</html>

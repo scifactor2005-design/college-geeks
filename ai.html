@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artificial Intelligence - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            /* CSS Gradient Banner instead of Image */
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Abstract tech pattern overlay */
+        .page-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(74, 222, 128, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(96, 165, 250, 0.15) 0%, transparent 20%);
+            pointer-events: none;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #4ade80;
+            /* Green accent for AI */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.2rem;
+            color: #e2e8f0;
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            /* Ensure SVG has background if transparent */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg" aria-hidden="true"></div>
+
+    <nav class="navbar" aria-label="Main navigation">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html" class="active">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Artificial Intelligence</h1>
+        <p>Creating intelligent agents that can perceive, reason, act, and learn.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Introduction</h2>
+        <p>Artificial Intelligence (AI) is the simulation of human intelligence processes by machines, especially
+            computer systems. It encompasses a wide range of techniques, from rule-based systems to advanced machine
+            learning models.</p>
+        <img src="ai_diagram.svg" alt="Agent-Environment Loop Diagram">
+    </div>
+
+    <div class="content-section">
+        <h2>Search Algorithms</h2>
+        <p>Search is a fundamental problem-solving technique in AI. It involves finding a sequence of actions that leads
+            from a start state to a goal state. Examples include BFS, DFS, and A* search.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Knowledge Representation</h2>
+        <p>To act intelligently, agents need knowledge about the world. This involves representing information using
+            logic (Propositional, First-Order) or semantic networks so that computers can process it.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Probabilistic Reasoning</h2>
+        <p>The real world is uncertain. AI uses probability theory (Bayesian Networks, Markov Models) to reason and make
+            decisions in the presence of uncertainty and incomplete information.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Natural Language Processing (NLP)</h2>
+        <p>NLP enables computers to understand, interpret, and generate human language. It bridges the gap between human
+            communication and computer understanding.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Robotics</h2>
+        <p>Robotics involves designing and building physical agents (robots) that interact with the real world. It
+            combines AI with mechanical and electrical engineering.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+
+    <script>
+        (function () {
+            const bg = document.getElementById('dynamic-bg');
+            const slides = [
+                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
+                { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
+                { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
+                { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
+            ];
+            let current = 0;
+            function applySlide(i) {
+                const slide = slides[i];
+                bg.style.background = slide.bg;
+                document.documentElement.style.setProperty('--fg', slide.fg);
+                document.documentElement.style.setProperty('--link-color', slide.link);
+            }
+            applySlide(4);
+        })();
+    </script>
+</body>
+
+</html>
