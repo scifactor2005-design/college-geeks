@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Programming - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #be123c 0%, #f43f5e 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-example {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+    <div class="page-header">
+        <h1>Dynamic Programming</h1>
+        <p>Optimization through intelligent subproblem solving</p>
+    </div>
+    <div class="content-section">
+        <h2>What is Dynamic Programming?</h2>
+        <p>Dynamic Programming (DP) is an algorithmic technique for solving optimization problems by breaking them down
+            into simpler subproblems. It stores the results of subproblems to avoid redundant computations.</p>
+        <h3>Key Principles:</h3>
+        <ul>
+            <li><strong>Optimal Substructure:</strong> Optimal solution contains optimal solutions to subproblems</li>
+            <li><strong>Overlapping Subproblems:</strong> Same subproblems are solved multiple times</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Approaches</h2>
+        <h3>1. Memoization (Top-Down)</h3>
+        <p>Start with the original problem and recursively break it down, storing results in a cache.</p>
+        <div class="code-example">
+            <pre>
+// Fibonacci with Memoization
+int fib(int n, vector&lt;int&gt;& dp) {
+    if (n <= 1) return n;
+    if (dp[n] != -1) return dp[n];
+    return dp[n] = fib(n-1, dp) + fib(n-2, dp);
+}
+
+int fibonacci(int n) {
+    vector&lt;int&gt; dp(n+1, -1);
+    return fib(n, dp);
+}
+</pre>
+        </div>
+        <h3>2. Tabulation (Bottom-Up)</h3>
+        <p>Start with the smallest subproblems and build up to the original problem.</p>
+        <div class="code-example">
+            <pre>
+// Fibonacci with Tabulation
+int fibonacci(int n) {
+    if (n <= 1) return n;
+    vector&lt;int&gt; dp(n+1);
+    dp[0] = 0;
+    dp[1] = 1;
+    
+    for (int i = 2; i <= n; i++) {
+        dp[i] = dp[i-1] + dp[i-2];
+    }
+    return dp[n];
+}
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Classic DP Problems</h2>
+        <h3>1. 0/1 Knapsack</h3>
+        <p>Given weights and values of items, maximize value in a knapsack of limited capacity.</p>
+        <div class="code-example">
+            <pre>
+int knapsack(int W, vector&lt;int&gt;& wt, vector&lt;int&gt;& val, int n) {
+    vector&lt;vector&lt;int&gt;&gt; dp(n+1, vector&lt;int&gt;(W+1, 0));
+    
+    for (int i = 1; i <= n; i++) {
+        for (int w = 1; w <= W; w++) {
+            if (wt[i-1] <= w) {
+                dp[i][w] = max(val[i-1] + dp[i-1][w-wt[i-1]], 
+                              dp[i-1][w]);
+            } else {
+                dp[i][w] = dp[i-1][w];
+            }
+        }
+    }
+    return dp[n][W];
+}
+</pre>
+        </div>
+        <h3>2. Longest Common Subsequence (LCS)</h3>
+        <div class="code-example">
+            <pre>
+int LCS(string s1, string s2) {
+    int m = s1.length(), n = s2.length();
+    vector&lt;vector&lt;int&gt;&gt; dp(m+1, vector&lt;int&gt;(n+1, 0));
+    
+    for (int i = 1; i <= m; i++) {
+        for (int j = 1; j <= n; j++) {
+            if (s1[i-1] == s2[j-1])
+                dp[i][j] = 1 + dp[i-1][j-1];
+            else
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+        }
+    }
+    return dp[m][n];
+}
+</pre>
+        </div>
+        <h3>3. Coin Change</h3>
+        <p>Find minimum coins needed to make a given amount.</p>
+        <div class="code-example">
+            <pre>
+int coinChange(vector&lt;int&gt;& coins, int amount) {
+    vector&lt;int&gt; dp(amount + 1, INT_MAX);
+    dp[0] = 0;
+    
+    for (int i = 1; i <= amount; i++) {
+        for (int coin : coins) {
+            if (i >= coin && dp[i - coin] != INT_MAX) {
+                dp[i] = min(dp[i], dp[i - coin] + 1);
+            }
+        }
+    }
+    return dp[amount] == INT_MAX ? -1 : dp[amount];
+}
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>When to Use DP?</h2>
+        <ul>
+            <li>Problem asks for optimization (min/max)</li>
+            <li>Problem can be broken into overlapping subproblems</li>
+            <li>Future decisions depend on earlier decisions</li>
+            <li>Problem has optimal substructure</li>
+        </ul>
+        <h3>Common DP Patterns:</h3>
+        <ul>
+            <li>Fibonacci-like sequences</li>
+            <li>Grid/Matrix path problems</li>
+            <li>Subset sum variations</li>
+            <li>String matching problems</li>
+            <li>Game theory problems</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Applications</h2>
+        <ul>
+            <li><strong>Resource Allocation:</strong> Optimizing budget distribution</li>
+            <li><strong>Bioinformatics:</strong> DNA sequence alignment</li>
+            <li><strong>Economics:</strong> Portfolio optimization</li>
+            <li><strong>Computer Graphics:</strong> Image compression</li>
+            <li><strong>Operations Research:</strong> Scheduling and planning</li>
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+    <script>(function () { const bg = document.getElementById('dynamic-bg'); const slides = [{ bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' }]; function applySlide(i) { const slide = slides[i]; bg.style.background = slide.bg; document.documentElement.style.setProperty('--fg', slide.fg); document.documentElement.style.setProperty('--link-color', slide.link); } applySlide(0); })();</script>
+</body>
+
+</html>

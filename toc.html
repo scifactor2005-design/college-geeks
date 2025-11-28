@@ -74,29 +74,66 @@
     </div>
 
     <div class="content-section">
-        <p>&copy; 2024 College Geeks. All rights reserved.</p>
-        </footer>
+        <h2>Introduction</h2>
+        <p>Theory of Computation deals with how efficiently problems can be solved on a model of computation, using an
+            algorithm. It is divided into automata theory, computability theory, and complexity theory.</p>
+        <img src="toc_diagram.svg" alt="Chomsky Hierarchy Diagram">
+    </div>
 
-        <script>
-            (function () {
-                const bg = document.getElementById('dynamic-bg');
-                const slides = [
-                    { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
-                    { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
-                    { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
-                    { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
-                    { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
-                ];
-                let current = 0;
-                function applySlide(i) {
-                    const slide = slides[i];
-                    bg.style.background = slide.bg;
-                    document.documentElement.style.setProperty('--fg', slide.fg);
-                    document.documentElement.style.setProperty('--link-color', slide.link);
-                }
-                applySlide(3);
-            })();
-        </script>
+    <div class="content-section">
+        <h2>Finite Automata</h2>
+        <p>Finite Automata are abstract machines used to recognize patterns. They are the simplest model of computation
+            and are used to design lexical analyzers. Types include DFA (Deterministic) and NFA (Non-deterministic).</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Context-Free Grammars (CFG)</h2>
+        <p>CFGs are used to describe the syntax of programming languages. They are more powerful than regular
+            expressions and are recognized by Pushdown Automata.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Pushdown Automata</h2>
+        <p>Pushdown Automata are finite automata with a stack memory. They can recognize Context-Free Languages, which
+            include most programming language constructs.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Turing Machines</h2>
+        <p>A Turing Machine is a mathematical model of computation that defines an abstract machine. It is capable of
+            simulating any computer algorithm and is used to study the limits of computation.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Complexity Theory</h2>
+        <p>Complexity Theory classifies problems based on their inherent difficulty. Key classes include P (solvable in
+            polynomial time) and NP (verifiable in polynomial time).</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+
+    <script>
+        (function () {
+            const bg = document.getElementById('dynamic-bg');
+            const slides = [
+                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
+                { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
+                { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
+                { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
+            ];
+            let current = 0;
+            function applySlide(i) {
+                const slide = slides[i];
+                bg.style.background = slide.bg;
+                document.documentElement.style.setProperty('--fg', slide.fg);
+                document.documentElement.style.setProperty('--link-color', slide.link);
+            }
+            applySlide(3);
+        })();
+    </script>
 </body>
 
 </html>

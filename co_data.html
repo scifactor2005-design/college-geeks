@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Representation - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-example {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f3f4f6;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+    <div class="page-header">
+        <h1>Data Representation</h1>
+        <p>How computers store and interpret data</p>
+    </div>
+    <div class="content-section">
+        <h2>Number Systems</h2>
+        <p>Computers use different number systems to represent data. Understanding these is fundamental to computer
+            organization.</p>
+        <h3>Binary (Base-2)</h3>
+        <p>Uses only 0 and 1. This is the native language of computers.</p>
+        <div class="code-example">
+            <pre>
+Decimal: 13
+Binary: 1101
+Calculation: (1×2³) + (1×2²) + (0×2¹) + (1×2⁰) = 8 + 4 + 0 + 1 = 13
+</pre>
+        </div>
+        <h3>Hexadecimal (Base-16)</h3>
+        <p>Uses 0-9 and A-F. Commonly used for memory addresses and color codes.</p>
+        <div class="code-example">
+            <pre>
+Decimal: 255
+Hexadecimal: FF
+Binary: 11111111
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Integer Representation</h2>
+        <h3>Unsigned Integers</h3>
+        <p>Represent only non-negative numbers. An n-bit unsigned integer can represent values from 0 to 2ⁿ-1.</p>
+        <table>
+            <tr>
+                <th>Bits</th>
+                <th>Range</th>
+            </tr>
+            <tr>
+                <td>8-bit</td>
+                <td>0 to 255</td>
+            </tr>
+            <tr>
+                <td>16-bit</td>
+                <td>0 to 65,535</td>
+            </tr>
+            <tr>
+                <td>32-bit</td>
+                <td>0 to 4,294,967,295</td>
+            </tr>
+        </table>
+        <h3>Signed Integers (Two's Complement)</h3>
+        <p>Most common method for representing negative numbers. The MSB (Most Significant Bit) indicates sign.</p>
+        <div class="code-example">
+            <pre>
+8-bit signed range: -128 to +127
+
+Positive: 5 = 00000101
+Negative: -5 = 11111011
+(Invert bits of 5: 11111010, then add 1: 11111011)
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Floating-Point Representation (IEEE 754)</h2>
+        <p>Used to represent real numbers with fractional parts.</p>
+        <h3>Single Precision (32-bit):</h3>
+        <ul>
+            <li>1 bit: Sign</li>
+            <li>8 bits: Exponent</li>
+            <li>23 bits: Mantissa (fraction)</li>
+        </ul>
+        <h3>Double Precision (64-bit):</h3>
+        <ul>
+            <li>1 bit: Sign</li>
+            <li>11 bits: Exponent</li>
+            <li>52 bits: Mantissa</li>
+        </ul>
+        <div class="code-example">
+            <pre>
+Number: -12.375
+Sign: 1 (negative)
+Binary: 1100.011
+Normalized: 1.100011 × 2³
+Exponent: 3 + 127 (bias) = 130 = 10000010
+Mantissa: 10001100000000000000000
+Result: 1 10000010 10001100000000000000000
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Character Encoding</h2>
+        <h3>ASCII (American Standard Code for Information Interchange)</h3>
+        <p>7-bit encoding supporting 128 characters (0-127).</p>
+        <div class="code-example">
+            <pre>
+'A' = 65 (decimal) = 01000001 (binary)
+'a' = 97 (decimal) = 01100001 (binary)
+'0' = 48 (decimal) = 00110000 (binary)
+</pre>
+        </div>
+        <h3>Unicode (UTF-8, UTF-16)</h3>
+        <p>Universal character encoding supporting all world languages and symbols.</p>
+        <ul>
+            <li><strong>UTF-8:</strong> Variable length (1-4 bytes), backward compatible with ASCII</li>
+            <li><strong>UTF-16:</strong> Uses 2 or 4 bytes per character</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Boolean Algebra</h2>
+        <p>Foundation of digital logic. Basic operations:</p>
+        <table>
+            <tr>
+                <th>Operation</th>
+                <th>Symbol</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>AND</td>
+                <td>∧ or ·</td>
+                <td>Output 1 if both inputs are 1</td>
+            </tr>
+            <tr>
+                <td>OR</td>
+                <td>∨ or +</td>
+                <td>Output 1 if at least one input is 1</td>
+            </tr>
+            <tr>
+                <td>NOT</td>
+                <td>¬ or '</td>
+                <td>Inverts the input</td>
+            </tr>
+            <tr>
+                <td>XOR</td>
+                <td>⊕</td>
+                <td>Output 1 if inputs are different</td>
+            </tr>
+        </table>
+        <h3>De Morgan's Laws:</h3>
+        <div class="code-example">
+            <pre>
+NOT (A AND B) = (NOT A) OR (NOT B)
+NOT (A OR B) = (NOT A) AND (NOT B)
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Applications</h2>
+        <ul>
+            <li><strong>Image Processing:</strong> Pixels represented as RGB values</li>
+            <li><strong>Audio:</strong> Sound waves sampled and digitized</li>
+            <li><strong>Compression:</strong> Efficient data encoding (ZIP, JPEG)</li>
+            <li><strong>Cryptography:</strong> Binary operations for encryption</li>
+            <li><strong>Networking:</strong> IP addresses in binary/hex</li>
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+    <script>(function () { const bg = document.getElementById('dynamic-bg'); const slides = [{ bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' }]; function applySlide(i) { const slide = slides[i]; bg.style.background = slide.bg; document.documentElement.style.setProperty('--fg', slide.fg); document.documentElement.style.setProperty('--link-color', slide.link); } applySlide(0); })();</script>
+</body>
+
+</html>

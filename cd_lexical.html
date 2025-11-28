@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexical Analysis - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-example {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+    <div class="page-header">
+        <h1>Lexical Analysis</h1>
+        <p>The first phase of compilation - tokenizing source code</p>
+    </div>
+    <div class="content-section">
+        <h2>What is Lexical Analysis?</h2>
+        <p>Lexical analysis (scanning) is the first phase of a compiler. It reads the source code as a stream of
+            characters and groups them into meaningful sequences called tokens.</p>
+        <h3>Role of Lexical Analyzer:</h3>
+        <ul>
+            <li>Read source code character by character</li>
+            <li>Group characters into lexemes (token instances)</li>
+            <li>Generate tokens for the parser</li>
+            <li>Remove whitespace and comments</li>
+            <li>Report lexical errors</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Tokens</h2>
+        <p>A token is a pair consisting of a token name and an optional attribute value.</p>
+        <h3>Token Categories:</h3>
+        <table>
+            <tr>
+                <th>Token Type</th>
+                <th>Examples</th>
+                <th>Pattern</th>
+            </tr>
+            <tr>
+                <td>Keywords</td>
+                <td>if, while, int, return</td>
+                <td>Reserved words</td>
+            </tr>
+            <tr>
+                <td>Identifiers</td>
+                <td>variable names, function names</td>
+                <td>[a-zA-Z][a-zA-Z0-9]*</td>
+            </tr>
+            <tr>
+                <td>Operators</td>
+                <td>+, -, *, /, ==, !=</td>
+                <td>Specific symbols</td>
+            </tr>
+            <tr>
+                <td>Literals</td>
+                <td>123, 3.14, "hello"</td>
+                <td>Numbers, strings</td>
+            </tr>
+            <tr>
+                <td>Punctuation</td>
+                <td>;, {, }, (, )</td>
+                <td>Delimiters</td>
+            </tr>
+        </table>
+        <div class="code-example">
+            <pre>
+Source: int sum = a + b;
+
+Tokens:
+<KEYWORD, int>
+<ID, "sum">
+<ASSIGN, =>
+<ID, "a">
+<PLUS, +>
+<ID, "b">
+<SEMICOLON, ;>
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Regular Expressions</h2>
+        <p>Regular expressions are used to specify patterns for tokens.</p>
+        <h3>Basic Operations:</h3>
+        <ul>
+            <li><strong>Concatenation:</strong> ab (a followed by b)</li>
+            <li><strong>Alternation:</strong> a|b (a or b)</li>
+            <li><strong>Kleene Star:</strong> a* (zero or more a's)</li>
+            <li><strong>Positive Closure:</strong> a+ (one or more a's)</li>
+            <li><strong>Optional:</strong> a? (zero or one a)</li>
+        </ul>
+        <div class="code-example">
+            <pre>
+Identifier: [a-zA-Z][a-zA-Z0-9]*
+Integer: [0-9]+
+Float: [0-9]+\.[0-9]+
+String: \"[^\"]*\"
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Finite Automata</h2>
+        <p>Regular expressions are implemented using finite automata.</p>
+        <h3>DFA (Deterministic Finite Automaton)</h3>
+        <ul>
+            <li>For each state and input, exactly one transition</li>
+            <li>Efficient for pattern matching</li>
+            <li>Used in lexical analyzers</li>
+        </ul>
+        <h3>NFA (Non-deterministic Finite Automaton)</h3>
+        <ul>
+            <li>Multiple possible transitions for same input</li>
+            <li>Easier to construct from regex</li>
+            <li>Converted to DFA for implementation</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Lexical Analyzer Implementation</h2>
+        <div class="code-example">
+            <pre>
+// Simple lexer pseudocode
+class Lexer {
+    string input;
+    int position;
+    
+    Token getNextToken() {
+        skipWhitespace();
+        
+        if (isLetter(current())) {
+            return readIdentifierOrKeyword();
+        }
+        if (isDigit(current())) {
+            return readNumber();
+        }
+        if (current() == '"') {
+            return readString();
+        }
+        if (isOperator(current())) {
+            return readOperator();
+        }
+        
+        return Token(ERROR, current());
+    }
+    
+    Token readIdentifierOrKeyword() {
+        string lexeme = "";
+        while (isLetterOrDigit(current())) {
+            lexeme += current();
+            advance();
+        }
+        if (isKeyword(lexeme))
+            return Token(KEYWORD, lexeme);
+        return Token(ID, lexeme);
+    }
+}
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Lexer Generator Tools</h2>
+        <h3>Lex/Flex</h3>
+        <p>Popular lexer generator. Input: regular expressions and actions. Output: C code for lexical analyzer.</p>
+        <div class="code-example">
+            <pre>
+/* Lex specification */
+%%
+[0-9]+          { return NUMBER; }
+[a-zA-Z][a-zA-Z0-9]*  { return ID; }
+"+"             { return PLUS; }
+"-"             { return MINUS; }
+[ \t\n]         { /* skip whitespace */ }
+.               { return ERROR; }
+%%
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Error Handling</h2>
+        <p>Lexical errors occur when input doesn't match any token pattern.</p>
+        <h3>Common Errors:</h3>
+        <ul>
+            <li>Invalid characters</li>
+            <li>Malformed numbers (e.g., 12.34.56)</li>
+            <li>Unterminated strings</li>
+            <li>Invalid identifiers</li>
+        </ul>
+        <h3>Error Recovery:</h3>
+        <ul>
+            <li>Skip invalid character and continue</li>
+            <li>Report error with line number</li>
+            <li>Try to recover and find next valid token</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Applications</h2>
+        <ul>
+            <li><strong>Compilers:</strong> First phase of compilation</li>
+            <li><strong>Text Editors:</strong> Syntax highlighting</li>
+            <li><strong>Search Engines:</strong> Query parsing</li>
+            <li><strong>Data Validation:</strong> Input format checking</li>
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+    <script>(function () { const bg = document.getElementById('dynamic-bg'); const slides = [{ bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' }]; function applySlide(i) { const slide = slides[i]; bg.style.background = slide.bg; document.documentElement.style.setProperty('--fg', slide.fg); document.documentElement.style.setProperty('--link-color', slide.link); } applySlide(0); })();</script>
+</body>
+
+</html>

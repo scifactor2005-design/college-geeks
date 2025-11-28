@@ -102,29 +102,66 @@
 
     <div class="content-section">
         <h2>Introduction</h2>
-        <p>&copy; 2024 College Geeks. All rights reserved.</p>
-        </footer>
+        <p>Artificial Intelligence (AI) is the simulation of human intelligence processes by machines, especially
+            computer systems. It encompasses a wide range of techniques, from rule-based systems to advanced machine
+            learning models.</p>
+        <img src="ai_diagram.svg" alt="Agent-Environment Loop Diagram">
+    </div>
 
-        <script>
-            (function () {
-                const bg = document.getElementById('dynamic-bg');
-                const slides = [
-                    { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
-                    { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
-                    { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
-                    { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
-                    { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
-                ];
-                let current = 0;
-                function applySlide(i) {
-                    const slide = slides[i];
-                    bg.style.background = slide.bg;
-                    document.documentElement.style.setProperty('--fg', slide.fg);
-                    document.documentElement.style.setProperty('--link-color', slide.link);
-                }
-                applySlide(4);
-            })();
-        </script>
+    <div class="content-section">
+        <h2>Search Algorithms</h2>
+        <p>Search is a fundamental problem-solving technique in AI. It involves finding a sequence of actions that leads
+            from a start state to a goal state. Examples include BFS, DFS, and A* search.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Knowledge Representation</h2>
+        <p>To act intelligently, agents need knowledge about the world. This involves representing information using
+            logic (Propositional, First-Order) or semantic networks so that computers can process it.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Probabilistic Reasoning</h2>
+        <p>The real world is uncertain. AI uses probability theory (Bayesian Networks, Markov Models) to reason and make
+            decisions in the presence of uncertainty and incomplete information.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Natural Language Processing (NLP)</h2>
+        <p>NLP enables computers to understand, interpret, and generate human language. It bridges the gap between human
+            communication and computer understanding.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Robotics</h2>
+        <p>Robotics involves designing and building physical agents (robots) that interact with the real world. It
+            combines AI with mechanical and electrical engineering.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+
+    <script>
+        (function () {
+            const bg = document.getElementById('dynamic-bg');
+            const slides = [
+                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
+                { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
+                { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
+                { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
+            ];
+            let current = 0;
+            function applySlide(i) {
+                const slide = slides[i];
+                bg.style.background = slide.bg;
+                document.documentElement.style.setProperty('--fg', slide.fg);
+                document.documentElement.style.setProperty('--link-color', slide.link);
+            }
+            applySlide(4);
+        })();
+    </script>
 </body>
 
 </html>

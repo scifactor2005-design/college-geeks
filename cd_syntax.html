@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax Analysis - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-example {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+    <div class="page-header">
+        <h1>Syntax Analysis</h1>
+        <p>Parsing and validating code structure</p>
+    </div>
+    <div class="content-section">
+        <h2>Introduction</h2>
+        <p>Syntax analysis (parsing) is the second phase of compilation. It takes tokens from lexical analyzer and
+            builds a parse tree representing the grammatical structure of the program.</p>
+    </div>
+    <div class="content-section">
+        <h2>Context-Free Grammars (CFG)</h2>
+        <p>CFGs define the syntax of programming languages using production rules.</p>
+        <div class="code-example">
+            <pre>
+E → E + T | T
+T → T * F | F
+F → (E) | id | num
+</pre>
+        </div>
+        <p>Example derivation for "id + id * id":</p>
+        <div class="code-example">
+            <pre>
+E → E + T
+  → T + T
+  → F + T
+  → id + T
+  → id + T * F
+  → id + F * F
+  → id + id * F
+  → id + id * id
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Parsing Techniques</h2>
+        <h3>Top-Down Parsing</h3>
+        <p>Starts from root and constructs tree downward. Examples: Recursive Descent, LL parsing.</p>
+        <h3>Bottom-Up Parsing</h3>
+        <p>Starts from leaves and builds up to root. Examples: LR, SLR, LALR parsing.</p>
+    </div>
+    <div class="content-section">
+        <h2>Parse Trees vs Syntax Trees</h2>
+        <p><strong>Parse Tree:</strong> Shows complete derivation with all grammar symbols</p>
+        <p><strong>Abstract Syntax Tree (AST):</strong> Simplified tree showing essential structure, used in later
+            compiler phases</p>
+    </div>
+    <div class="content-section">
+        <h2>Applications</h2>
+        <ul>
+            <li>Compiler construction</li>
+            <li>IDE syntax checking</li>
+            <li>Code formatters</li>
+            <li>Language processors</li>
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+    <script>(function () { const bg = document.getElementById('dynamic-bg'); const slides = [{ bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' }]; function applySlide(i) { const slide = slides[i]; bg.style.background = slide.bg; document.documentElement.style.setProperty('--fg', slide.fg); document.documentElement.style.setProperty('--link-color', slide.link); } applySlide(0); })();</script>
+</body>
+
+</html>

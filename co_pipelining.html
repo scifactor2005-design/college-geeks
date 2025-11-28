@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipelining - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+    <div class="page-header">
+        <h1>Pipelining</h1>
+        <p>Increasing instruction throughput through parallelism</p>
+    </div>
+    <div class="content-section">
+        <h2>What is Pipelining?</h2>
+        <p>Pipelining is a technique where multiple instructions are overlapped in execution. Like an assembly line,
+            different stages of different instructions execute simultaneously.</p>
+        <h3>Classic 5-Stage Pipeline:</h3>
+        <ol>
+            <li><strong>IF (Instruction Fetch):</strong> Fetch instruction from memory</li>
+            <li><strong>ID (Instruction Decode):</strong> Decode instruction and read registers</li>
+            <li><strong>EX (Execute):</strong> Perform ALU operation</li>
+            <li><strong>MEM (Memory Access):</strong> Read/write data memory</li>
+            <li><strong>WB (Write Back):</strong> Write result to register</li>
+        </ol>
+    </div>
+    <div class="content-section">
+        <h2>Pipeline Execution</h2>
+        <div class="diagram">
+            <pre>
+Time →
+Cycle: 1    2    3    4    5    6    7    8
+I1:    IF   ID   EX   MEM  WB
+I2:         IF   ID   EX   MEM  WB
+I3:              IF   ID   EX   MEM  WB
+I4:                   IF   ID   EX   MEM  WB
+I5:                        IF   ID   EX   MEM
+</pre>
+        </div>
+        <p><strong>Without Pipeline:</strong> 5 instructions × 5 cycles = 25 cycles</p>
+        <p><strong>With Pipeline:</strong> 5 + 4 = 9 cycles (ideal case)</p>
+        <p><strong>Speedup ≈ Number of Stages</strong> (in ideal conditions)</p>
+    </div>
+    <div class="content-section">
+        <h2>Pipeline Hazards</h2>
+        <h3>1. Structural Hazards</h3>
+        <p>Hardware cannot support all combinations of instructions simultaneously.</p>
+        <p><strong>Solution:</strong> Add more hardware resources or stall the pipeline.</p>
+        <h3>2. Data Hazards</h3>
+        <p>Instruction depends on result of previous instruction still in pipeline.</p>
+        <div class="diagram">
+            <pre>
+ADD R1, R2, R3   ; R1 = R2 + R3
+SUB R4, R1, R5   ; R4 = R1 - R5 (needs R1 from ADD)
+</pre>
+        </div>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li><strong>Forwarding/Bypassing:</strong> Pass result directly to next instruction</li>
+            <li><strong>Stalling:</strong> Insert bubbles (NOPs) in pipeline</li>
+            <li><strong>Compiler Scheduling:</strong> Reorder instructions</li>
+        </ul>
+        <h3>3. Control Hazards (Branch Hazards)</h3>
+        <p>Decision about control flow made while other instructions in pipeline.</p>
+        <p><strong>Solutions:</strong></p>
+        <ul>
+            <li><strong>Branch Prediction:</strong> Guess branch outcome</li>
+            <li><strong>Delayed Branch:</strong> Execute instruction after branch regardless</li>
+            <li><strong>Branch Target Buffer:</strong> Cache of branch targets</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Performance Metrics</h2>
+        <h3>CPI (Cycles Per Instruction)</h3>
+        <p>Average number of clock cycles per instruction.</p>
+        <p><strong>Ideal Pipeline CPI = 1</strong></p>
+        <p><strong>Actual CPI = 1 + Stall Cycles per Instruction</strong></p>
+        <h3>Speedup</h3>
+        <p><strong>Speedup = Time without pipeline / Time with pipeline</strong></p>
+        <p><strong>Theoretical Max Speedup = Number of Pipeline Stages</strong></p>
+    </div>
+    <div class="content-section">
+        <h2>Advanced Pipelining</h2>
+        <h3>Superpipelining</h3>
+        <p>Divide pipeline stages into smaller stages for higher clock frequency.</p>
+        <h3>Superscalar</h3>
+        <p>Multiple pipelines execute instructions in parallel. Can issue multiple instructions per cycle.</p>
+        <h3>Out-of-Order Execution</h3>
+        <p>Execute instructions as resources become available, not in program order.</p>
+    </div>
+    <div class="content-section">
+        <h2>Applications</h2>
+        <ul>
+            <li><strong>Modern CPUs:</strong> All modern processors use pipelining</li>
+            <li><strong>Graphics Processing:</strong> GPU pipelines for rendering</li>
+            <li><strong>Network Routers:</strong> Packet processing pipelines</li>
+            <li><strong>Signal Processing:</strong> DSP pipelines for real-time processing</li>
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+    <script>(function () { const bg = document.getElementById('dynamic-bg'); const slides = [{ bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' }]; function applySlide(i) { const slide = slides[i]; bg.style.background = slide.bg; document.documentElement.style.setProperty('--fg', slide.fg); document.documentElement.style.setProperty('--link-color', slide.link); } applySlide(0); })();</script>
+</body>
+
+</html>

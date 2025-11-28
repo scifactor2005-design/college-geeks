@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I/O Systems - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #be123c 0%, #e11d48 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+    <div class="page-header">
+        <h1>I/O Systems</h1>
+        <p>Connecting computers to the external world</p>
+    </div>
+    <div class="content-section">
+        <h2>I/O Devices</h2>
+        <p>Input/Output devices allow computers to interact with users and other systems.</p>
+        <h3>Input Devices:</h3>
+        <ul>
+            <li>Keyboard, Mouse, Touchscreen</li>
+            <li>Scanners, Cameras</li>
+            <li>Microphones</li>
+            <li>Sensors (temperature, pressure, etc.)</li>
+        </ul>
+        <h3>Output Devices:</h3>
+        <ul>
+            <li>Monitors, Printers</li>
+            <li>Speakers</li>
+            <li>Actuators, Motors</li>
+        </ul>
+        <h3>Storage Devices:</h3>
+        <ul>
+            <li>Hard Drives (HDD), Solid State Drives (SSD)</li>
+            <li>USB Drives, SD Cards</li>
+            <li>Optical Drives (CD/DVD)</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>I/O Communication Methods</h2>
+        <h3>1. Programmed I/O (Polling)</h3>
+        <p>CPU continuously checks device status.</p>
+        <p><strong>Advantages:</strong> Simple to implement</p>
+        <p><strong>Disadvantages:</strong> Wastes CPU cycles</p>
+        <h3>2. Interrupt-Driven I/O</h3>
+        <p>Device sends interrupt signal when ready. CPU can do other work while waiting.</p>
+        <p><strong>Process:</strong></p>
+        <ol>
+            <li>CPU initiates I/O operation</li>
+            <li>CPU continues other work</li>
+            <li>Device sends interrupt when done</li>
+            <li>CPU handles interrupt (saves state, executes ISR)</li>
+            <li>CPU resumes previous work</li>
+        </ol>
+        <h3>3. Direct Memory Access (DMA)</h3>
+        <p>Device transfers data directly to/from memory without CPU intervention.</p>
+        <p><strong>Benefits:</strong></p>
+        <ul>
+            <li>Frees CPU for other tasks</li>
+            <li>Faster data transfer</li>
+            <li>Efficient for large data blocks</li>
+        </ul>
+        <p><strong>DMA Steps:</strong></p>
+        <ol>
+            <li>CPU programs DMA controller (source, destination, size)</li>
+            <li>DMA controller takes control of bus</li>
+            <li>Data transferred directly between device and memory</li>
+            <li>DMA sends interrupt when complete</li>
+        </ol>
+    </div>
+    <div class="content-section">
+        <h2>Bus Architecture</h2>
+        <p>A bus is a communication pathway connecting different components.</p>
+        <h3>Types of Buses:</h3>
+        <table>
+            <tr>
+                <th>Bus Type</th>
+                <th>Purpose</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>Data Bus</td>
+                <td>Transfer data</td>
+                <td>32-bit, 64-bit</td>
+            </tr>
+            <tr>
+                <td>Address Bus</td>
+                <td>Specify memory locations</td>
+                <td>32-bit = 4GB addressable</td>
+            </tr>
+            <tr>
+                <td>Control Bus</td>
+                <td>Control signals</td>
+                <td>Read, Write, Clock</td>
+            </tr>
+        </table>
+        <h3>Bus Standards:</h3>
+        <ul>
+            <li><strong>PCI/PCIe:</strong> Peripheral Component Interconnect</li>
+            <li><strong>USB:</strong> Universal Serial Bus</li>
+            <li><strong>SATA:</strong> Serial ATA for storage</li>
+            <li><strong>I2C, SPI:</strong> Low-speed serial buses</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>I/O Performance</h2>
+        <h3>Factors Affecting Performance:</h3>
+        <ul>
+            <li><strong>Bandwidth:</strong> Data transfer rate (MB/s, GB/s)</li>
+            <li><strong>Latency:</strong> Time to initiate transfer</li>
+            <li><strong>CPU Overhead:</strong> CPU time spent on I/O</li>
+            <li><strong>Bus Contention:</strong> Multiple devices competing for bus</li>
+        </ul>
+        <h3>Optimization Techniques:</h3>
+        <ul>
+            <li><strong>Buffering:</strong> Temporary storage to smooth data flow</li>
+            <li><strong>Caching:</strong> Store frequently accessed data</li>
+            <li><strong>Spooling:</strong> Queue I/O requests (printing)</li>
+            <li><strong>I/O Scheduling:</strong> Optimize order of I/O operations</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Device Drivers</h2>
+        <p>Software that allows OS to communicate with hardware devices.</p>
+        <h3>Functions:</h3>
+        <ul>
+            <li>Initialize device</li>
+            <li>Handle device-specific operations</li>
+            <li>Manage device errors</li>
+            <li>Provide uniform interface to OS</li>
+        </ul>
+        <h3>Driver Layers:</h3>
+        <ol>
+            <li><strong>Application Layer:</strong> User programs</li>
+            <li><strong>OS I/O Subsystem:</strong> Generic I/O services</li>
+            <li><strong>Device Driver:</strong> Device-specific code</li>
+            <li><strong>Hardware:</strong> Physical device</li>
+        </ol>
+    </div>
+    <div class="content-section">
+        <h2>Applications</h2>
+        <ul>
+            <li><strong>Real-Time Systems:</strong> Sensor data acquisition</li>
+            <li><strong>Multimedia:</strong> Audio/video streaming</li>
+            <li><strong>Networking:</strong> Network interface cards</li>
+            <li><strong>Gaming:</strong> Controller input, graphics output</li>
+            <li><strong>Industrial Control:</strong> Automation systems</li>
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+    <script>(function () { const bg = document.getElementById('dynamic-bg'); const slides = [{ bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' }]; function applySlide(i) { const slide = slides[i]; bg.style.background = slide.bg; document.documentElement.style.setProperty('--fg', slide.fg); document.documentElement.style.setProperty('--link-color', slide.link); } applySlide(0); })();</script>
+</body>
+
+</html>

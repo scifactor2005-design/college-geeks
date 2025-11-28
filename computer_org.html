@@ -74,29 +74,66 @@
     </div>
 
     <div class="content-section">
-        <p>&copy; 2024 College Geeks. All rights reserved.</p>
-        </footer>
+        <h2>Introduction</h2>
+        <p>Computer Organization refers to the operational units and their interconnections that realize the
+            architectural specifications. It deals with the physical components of a computer system.</p>
+        <img src="co_diagram.png" alt="Von Neumann Architecture Diagram">
+    </div>
 
-        <script>
-            (function () {
-                const bg = document.getElementById('dynamic-bg');
-                const slides = [
-                    { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
-                    { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
-                    { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
-                    { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
-                    { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
-                ];
-                let current = 0;
-                function applySlide(i) {
-                    const slide = slides[i];
-                    bg.style.background = slide.bg;
-                    document.documentElement.style.setProperty('--fg', slide.fg);
-                    document.documentElement.style.setProperty('--link-color', slide.link);
-                }
-                applySlide(1); // Different start slide for variety
-            })();
-        </script>
+    <div class="content-section">
+        <h2>Data Representation</h2>
+        <p>Computers store data in binary format (0s and 1s). Understanding how numbers, characters, and other data
+            types are represented in binary, hexadecimal, and floating-point formats is fundamental.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Instruction Set Architecture (ISA)</h2>
+        <p>The ISA is the interface between the hardware and the software. It defines the set of instructions that a
+            processor can execute, including addressing modes, instruction formats, and data types.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Memory Hierarchy</h2>
+        <p>To balance speed and cost, computers use a hierarchy of memory types: Registers, Cache (L1, L2, L3), Main
+            Memory (RAM), and Secondary Storage (SSD/HDD).</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Pipelining</h2>
+        <p>Pipelining is a technique used to increase instruction throughput by overlapping the execution of multiple
+            instructions. It involves stages like Fetch, Decode, Execute, Memory Access, and Write Back.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>I/O Systems</h2>
+        <p>Input/Output systems manage the communication between the computer and external devices. Techniques like
+            Interrupts and Direct Memory Access (DMA) are used for efficient data transfer.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+
+    <script>
+        (function () {
+            const bg = document.getElementById('dynamic-bg');
+            const slides = [
+                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
+                { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
+                { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
+                { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
+            ];
+            let current = 0;
+            function applySlide(i) {
+                const slide = slides[i];
+                bg.style.background = slide.bg;
+                document.documentElement.style.setProperty('--fg', slide.fg);
+                document.documentElement.style.setProperty('--link-color', slide.link);
+            }
+            applySlide(1); // Different start slide for variety
+        })();
+    </script>
 </body>
 
 </html>

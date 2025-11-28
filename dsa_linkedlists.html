@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked Lists - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-example {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f3f4f6;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg" aria-hidden="true"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Linked Lists</h1>
+        <p>Dynamic data structures with flexible memory allocation</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Introduction</h2>
+        <p>A linked list is a linear data structure where elements are not stored in contiguous memory locations. Each
+            element (node) contains data and a reference (pointer) to the next node in the sequence. This allows for
+            efficient insertion and deletion operations.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Node Structure</h2>
+        <p>Each node in a linked list contains two parts:</p>
+        <ul>
+            <li><strong>Data:</strong> The actual value stored in the node</li>
+            <li><strong>Next Pointer:</strong> Reference to the next node in the list</li>
+        </ul>
+        <div class="code-example">
+            <pre>
+// Node structure in C++
+struct Node {
+    int data;
+    Node* next;
+    
+    Node(int val) : data(val), next(nullptr) {}
+};
+            </pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Types of Linked Lists</h2>
+
+        <h3>1. Singly Linked List</h3>
+        <p>Each node points to the next node. Traversal is only possible in one direction (forward).</p>
+        <div class="diagram">
+            <p><strong>[10|→] → [20|→] → [30|→] → [40|NULL]</strong></p>
+        </div>
+
+        <h3>2. Doubly Linked List</h3>
+        <p>Each node has two pointers: one to the next node and one to the previous node. Allows bidirectional
+            traversal.</p>
+        <div class="code-example">
+            <pre>
+struct DNode {
+    int data;
+    DNode* next;
+    DNode* prev;
+    
+    DNode(int val) : data(val), next(nullptr), prev(nullptr) {}
+};
+            </pre>
+        </div>
+
+        <h3>3. Circular Linked List</h3>
+        <p>The last node points back to the first node, forming a circle. Useful for round-robin scheduling.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Basic Operations</h2>
+
+        <h3>Insertion at Beginning</h3>
+        <div class="code-example">
+            <pre>
+void insertAtBeginning(Node*& head, int data) {
+    Node* newNode = new Node(data);
+    newNode->next = head;
+    head = newNode;
+}
+            </pre>
+        </div>
+
+        <h3>Insertion at End</h3>
+        <div class="code-example">
+            <pre>
+void insertAtEnd(Node*& head, int data) {
+    Node* newNode = new Node(data);
+    if (head == nullptr) {
+        head = newNode;
+        return;
+    }
+    Node* temp = head;
+    while (temp->next != nullptr) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+            </pre>
+        </div>
+
+        <h3>Deletion</h3>
+        <div class="code-example">
+            <pre>
+void deleteNode(Node*& head, int key) {
+    if (head == nullptr) return;
+    
+    if (head->data == key) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return;
+    }
+    
+    Node* temp = head;
+    while (temp->next != nullptr && temp->next->data != key) {
+        temp = temp->next;
+    }
+    
+    if (temp->next != nullptr) {
+        Node* toDelete = temp->next;
+        temp->next = temp->next->next;
+        delete toDelete;
+    }
+}
+            </pre>
+        </div>
+
+        <h3>Traversal</h3>
+        <div class="code-example">
+            <pre>
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp != nullptr) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+            </pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Common Algorithms</h2>
+
+        <h3>1. Reverse a Linked List</h3>
+        <div class="code-example">
+            <pre>
+Node* reverse(Node* head) {
+    Node* prev = nullptr;
+    Node* current = head;
+    Node* next = nullptr;
+    
+    while (current != nullptr) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    return prev;
+}
+            </pre>
+        </div>
+
+        <h3>2. Detect Cycle (Floyd's Algorithm)</h3>
+        <div class="code-example">
+            <pre>
+bool hasCycle(Node* head) {
+    if (head == nullptr) return false;
+    
+    Node* slow = head;
+    Node* fast = head;
+    
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) return true;
+    }
+    return false;
+}
+            </pre>
+        </div>
+
+        <h3>3. Find Middle Element</h3>
+        <div class="code-example">
+            <pre>
+Node* findMiddle(Node* head) {
+    Node* slow = head;
+    Node* fast = head;
+    
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return slow;
+}
+            </pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Advantages vs Disadvantages</h2>
+
+        <h3>Advantages:</h3>
+        <ul>
+            <li>Dynamic size - can grow or shrink at runtime</li>
+            <li>Efficient insertion/deletion at beginning (O(1))</li>
+            <li>No memory wastage - allocate only what's needed</li>
+            <li>Easy implementation of stacks and queues</li>
+        </ul>
+
+        <h3>Disadvantages:</h3>
+        <ul>
+            <li>No random access - must traverse from head</li>
+            <li>Extra memory for storing pointers</li>
+            <li>Not cache-friendly due to non-contiguous memory</li>
+            <li>Reverse traversal difficult in singly linked lists</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Applications</h2>
+        <ul>
+            <li><strong>Dynamic Memory Allocation:</strong> Managing free memory blocks</li>
+            <li><strong>Undo Functionality:</strong> Storing previous states in applications</li>
+            <li><strong>Browser History:</strong> Forward and backward navigation</li>
+            <li><strong>Music Playlists:</strong> Next/previous song functionality</li>
+            <li><strong>Hash Tables:</strong> Handling collisions using chaining</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+
+    <script>
+        (function () {
+            const bg = document.getElementById('dynamic-bg');
+            const slides = [
+                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' }
+            ];
+            function applySlide(i) {
+                const slide = slides[i];
+                bg.style.background = slide.bg;
+                document.documentElement.style.setProperty('--fg', slide.fg);
+                document.documentElement.style.setProperty('--link-color', slide.link);
+            }
+            applySlide(1);
+        })();
+    </script>
+</body>
+
+</html>

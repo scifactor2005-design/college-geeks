@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruction Set Architecture - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-example {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+    <div class="page-header">
+        <h1>Instruction Set Architecture</h1>
+        <p>The interface between hardware and software</p>
+    </div>
+    <div class="content-section">
+        <h2>What is ISA?</h2>
+        <p>The Instruction Set Architecture defines the set of instructions a processor can execute. It's the contract
+            between hardware and software, specifying how programs communicate with the CPU.</p>
+        <h3>Components of ISA:</h3>
+        <ul>
+            <li><strong>Instructions:</strong> Operations the CPU can perform</li>
+            <li><strong>Data Types:</strong> Supported data formats (int, float, etc.)</li>
+            <li><strong>Registers:</strong> Fast storage locations in CPU</li>
+            <li><strong>Addressing Modes:</strong> Ways to specify operand locations</li>
+            <li><strong>Memory Architecture:</strong> How memory is organized and accessed</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Instruction Format</h2>
+        <p>Instructions typically consist of:</p>
+        <ul>
+            <li><strong>Opcode:</strong> Operation to perform (ADD, SUB, LOAD, etc.)</li>
+            <li><strong>Operands:</strong> Data or addresses to operate on</li>
+        </ul>
+        <div class="code-example">
+            <pre>
+Example: ADD R1, R2, R3
+- Opcode: ADD
+- Destination: R1
+- Source1: R2
+- Source2: R3
+Meaning: R1 = R2 + R3
+</pre>
+        </div>
+        <h3>Instruction Types:</h3>
+        <ul>
+            <li><strong>Data Transfer:</strong> LOAD, STORE, MOVE</li>
+            <li><strong>Arithmetic:</strong> ADD, SUB, MUL, DIV</li>
+            <li><strong>Logical:</strong> AND, OR, NOT, XOR</li>
+            <li><strong>Control Flow:</strong> JUMP, BRANCH, CALL, RETURN</li>
+            <li><strong>Comparison:</strong> CMP, TEST</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Addressing Modes</h2>
+        <p>Different ways to specify where operands are located:</p>
+        <h3>1. Immediate Addressing</h3>
+        <p>Operand is part of the instruction itself.</p>
+        <div class="code-example">
+            <pre>MOV R1, #5    ; R1 = 5</pre>
+        </div>
+        <h3>2. Direct Addressing</h3>
+        <p>Address of operand is given in instruction.</p>
+        <div class="code-example">
+            <pre>LOAD R1, 1000  ; R1 = Memory[1000]</pre>
+        </div>
+        <h3>3. Indirect Addressing</h3>
+        <p>Instruction contains address of address.</p>
+        <div class="code-example">
+            <pre>LOAD R1, (R2)  ; R1 = Memory[R2]</pre>
+        </div>
+        <h3>4. Register Addressing</h3>
+        <p>Operand is in a register.</p>
+        <div class="code-example">
+            <pre>ADD R1, R2, R3  ; R1 = R2 + R3</pre>
+        </div>
+        <h3>5. Indexed Addressing</h3>
+        <p>Effective address = Base + Index</p>
+        <div class="code-example">
+            <pre>LOAD R1, 100(R2)  ; R1 = Memory[100 + R2]</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>RISC vs CISC</h2>
+        <h3>RISC (Reduced Instruction Set Computer)</h3>
+        <ul>
+            <li>Small, simple instruction set</li>
+            <li>Fixed instruction length</li>
+            <li>Load/Store architecture</li>
+            <li>More registers</li>
+            <li>Examples: ARM, MIPS, RISC-V</li>
+        </ul>
+        <h3>CISC (Complex Instruction Set Computer)</h3>
+        <ul>
+            <li>Large, complex instruction set</li>
+            <li>Variable instruction length</li>
+            <li>Memory-to-memory operations</li>
+            <li>Fewer registers</li>
+            <li>Examples: x86, x86-64</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Example: Simple Assembly Program</h2>
+        <div class="code-example">
+            <pre>
+; Calculate sum of array elements
+    MOV R1, #0        ; R1 = sum = 0
+    MOV R2, #1000     ; R2 = array base address
+    MOV R3, #10       ; R3 = count = 10
+
+LOOP:
+    LOAD R4, (R2)     ; R4 = array[i]
+    ADD R1, R1, R4    ; sum += array[i]
+    ADD R2, R2, #4    ; Move to next element
+    SUB R3, R3, #1    ; count--
+    CMP R3, #0        ; Compare count with 0
+    BNE LOOP          ; Branch if not equal
+
+    STORE R1, 2000    ; Store result at address 2000
+    HALT              ; Stop execution
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Applications</h2>
+        <ul>
+            <li><strong>Compiler Design:</strong> Translating high-level code to assembly</li>
+            <li><strong>Operating Systems:</strong> Low-level system programming</li>
+            <li><strong>Embedded Systems:</strong> Direct hardware control</li>
+            <li><strong>Performance Optimization:</strong> Understanding CPU capabilities</li>
+            <li><strong>Virtualization:</strong> Emulating different architectures</li>
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+    <script>(function () { const bg = document.getElementById('dynamic-bg'); const slides = [{ bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' }]; function applySlide(i) { const slide = slides[i]; bg.style.background = slide.bg; document.documentElement.style.setProperty('--fg', slide.fg); document.documentElement.style.setProperty('--link-color', slide.link); } applySlide(0); })();</script>
+</body>
+
+</html>

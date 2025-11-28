@@ -99,29 +99,66 @@
     </div>
 
     <div class="content-section">
-        <p>&copy; 2024 College Geeks. All rights reserved.</p>
-        </footer>
+        <h2>Introduction</h2>
+        <p>Machine Learning (ML) is a subset of AI that focuses on building systems that learn from data. Instead of
+            being explicitly programmed, ML models find patterns in data to make predictions or decisions.</p>
+        <img src="ml_diagram.svg" alt="Types of Machine Learning Diagram">
+    </div>
 
-        <script>
-            (function () {
-                const bg = document.getElementById('dynamic-bg');
-                const slides = [
-                    { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
-                    { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
-                    { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
-                    { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
-                    { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
-                ];
-                let current = 0;
-                function applySlide(i) {
-                    const slide = slides[i];
-                    bg.style.background = slide.bg;
-                    document.documentElement.style.setProperty('--fg', slide.fg);
-                    document.documentElement.style.setProperty('--link-color', slide.link);
-                }
-                applySlide(0); // Reset to first slide style or choose another
-            })();
-        </script>
+    <div class="content-section">
+        <h2>Supervised Learning</h2>
+        <p>The model learns from labeled training data. It maps inputs to known outputs. Examples include classification
+            (spam detection) and regression (house price prediction).</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Unsupervised Learning</h2>
+        <p>The model learns from unlabeled data. It finds hidden structures or patterns. Common techniques include
+            clustering (customer segmentation) and dimensionality reduction (PCA).</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Reinforcement Learning</h2>
+        <p>An agent learns to make decisions by performing actions in an environment and receiving rewards or penalties.
+            It's widely used in robotics and game playing (e.g., AlphaGo).</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Neural Networks</h2>
+        <p>Inspired by the human brain, neural networks consist of layers of interconnected nodes (neurons). They are
+            the foundation of Deep Learning and are capable of modeling complex non-linear relationships.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Model Evaluation</h2>
+        <p>It's crucial to assess how well a model performs. Metrics like accuracy, precision, recall, F1-score, and
+            confusion matrices are used to evaluate models on test data.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+
+    <script>
+        (function () {
+            const bg = document.getElementById('dynamic-bg');
+            const slides = [
+                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
+                { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
+                { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
+                { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
+            ];
+            let current = 0;
+            function applySlide(i) {
+                const slide = slides[i];
+                bg.style.background = slide.bg;
+                document.documentElement.style.setProperty('--fg', slide.fg);
+                document.documentElement.style.setProperty('--link-color', slide.link);
+            }
+            applySlide(0); // Reset to first slide style or choose another
+        })();
+    </script>
 </body>
 
 </html>

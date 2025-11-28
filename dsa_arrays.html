@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays & Strings - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-example {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .code-example pre {
+            margin: 0;
+        }
+
+        .complexity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .complexity-table th,
+        .complexity-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .complexity-table th {
+            background-color: #f3f4f6;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg" aria-hidden="true"></div>
+
+    <nav class="navbar" aria-label="Main navigation">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Arrays & Strings</h1>
+        <p>The foundation of data storage and manipulation</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Introduction</h2>
+        <p>Arrays and strings are the most fundamental data structures in computer science. An array is a collection of
+            elements stored in contiguous memory locations, while a string is essentially an array of characters.
+            Understanding these structures is crucial for efficient data manipulation and algorithm design.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Array Basics</h2>
+        <p>An array stores elements of the same type in consecutive memory locations. This allows for constant-time
+            access to any element using its index.</p>
+
+        <h3>Key Characteristics:</h3>
+        <ul>
+            <li><strong>Fixed Size:</strong> Traditional arrays have a fixed size determined at creation</li>
+            <li><strong>Contiguous Memory:</strong> Elements are stored next to each other in memory</li>
+            <li><strong>Index-Based Access:</strong> Elements can be accessed using their position (0-indexed)</li>
+            <li><strong>Homogeneous:</strong> All elements must be of the same data type</li>
+        </ul>
+
+        <div class="code-example">
+            <pre>
+// Array Declaration and Initialization
+int arr[5] = {10, 20, 30, 40, 50};
+
+// Accessing elements
+int first = arr[0];  // 10
+int third = arr[2];  // 30
+
+// Modifying elements
+arr[1] = 25;  // arr is now {10, 25, 30, 40, 50}
+            </pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Time Complexity</h2>
+        <table class="complexity-table">
+            <thead>
+                <tr>
+                    <th>Operation</th>
+                    <th>Time Complexity</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Access</td>
+                    <td>O(1)</td>
+                    <td>Direct access using index</td>
+                </tr>
+                <tr>
+                    <td>Search</td>
+                    <td>O(n)</td>
+                    <td>Linear search through elements</td>
+                </tr>
+                <tr>
+                    <td>Insertion</td>
+                    <td>O(n)</td>
+                    <td>May require shifting elements</td>
+                </tr>
+                <tr>
+                    <td>Deletion</td>
+                    <td>O(n)</td>
+                    <td>May require shifting elements</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="content-section">
+        <h2>String Operations</h2>
+        <p>Strings are sequences of characters. In many languages, strings are immutable, meaning they cannot be changed
+            after creation. Common string operations include:</p>
+
+        <ul>
+            <li><strong>Concatenation:</strong> Joining two or more strings</li>
+            <li><strong>Substring:</strong> Extracting a portion of a string</li>
+            <li><strong>Comparison:</strong> Checking if strings are equal or comparing lexicographically</li>
+            <li><strong>Search:</strong> Finding a character or substring within a string</li>
+        </ul>
+
+        <div class="code-example">
+            <pre>
+// String operations in C++
+string str1 = "Hello";
+string str2 = "World";
+
+// Concatenation
+string result = str1 + " " + str2;  // "Hello World"
+
+// Length
+int len = str1.length();  // 5
+
+// Substring
+string sub = result.substr(0, 5);  // "Hello"
+
+// Character access
+char ch = str1[0];  // 'H'
+            </pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Common Algorithms</h2>
+
+        <h3>1. Two Pointer Technique</h3>
+        <p>Used for problems involving pairs or subarrays. Two pointers move through the array based on certain
+            conditions.</p>
+        <div class="code-example">
+            <pre>
+// Example: Check if array is palindrome
+bool isPalindrome(int arr[], int n) {
+    int left = 0, right = n - 1;
+    while (left < right) {
+        if (arr[left] != arr[right])
+            return false;
+        left++;
+        right--;
+    }
+    return true;
+}
+            </pre>
+        </div>
+
+        <h3>2. Sliding Window</h3>
+        <p>Efficient technique for problems involving subarrays or substrings of a specific size.</p>
+        <div class="code-example">
+            <pre>
+// Example: Maximum sum of k consecutive elements
+int maxSum(int arr[], int n, int k) {
+    int maxSum = 0, windowSum = 0;
+    
+    // First window
+    for (int i = 0; i < k; i++)
+        windowSum += arr[i];
+    maxSum = windowSum;
+    
+    // Slide the window
+    for (int i = k; i < n; i++) {
+        windowSum += arr[i] - arr[i - k];
+        maxSum = max(maxSum, windowSum);
+    }
+    return maxSum;
+}
+            </pre>
+        </div>
+
+        <h3>3. Prefix Sum</h3>
+        <p>Precompute cumulative sums for efficient range sum queries.</p>
+        <div class="code-example">
+            <pre>
+// Build prefix sum array
+void buildPrefixSum(int arr[], int prefix[], int n) {
+    prefix[0] = arr[0];
+    for (int i = 1; i < n; i++)
+        prefix[i] = prefix[i-1] + arr[i];
+}
+
+// Query sum from index l to r
+int rangeSum(int prefix[], int l, int r) {
+    if (l == 0) return prefix[r];
+    return prefix[r] - prefix[l-1];
+}
+            </pre>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Real-World Applications</h2>
+        <ul>
+            <li><strong>Image Processing:</strong> Images are represented as 2D arrays of pixels</li>
+            <li><strong>Database Records:</strong> Storing and retrieving data in tabular format</li>
+            <li><strong>Text Editors:</strong> String manipulation for editing operations</li>
+            <li><strong>Buffers:</strong> Temporary storage for data streams</li>
+            <li><strong>Lookup Tables:</strong> Fast access to precomputed values</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Practice Problems</h2>
+        <ol>
+            <li>Find the maximum and minimum element in an array</li>
+            <li>Reverse a string without using extra space</li>
+            <li>Find all pairs in an array that sum to a target value</li>
+            <li>Check if a string is a palindrome</li>
+            <li>Find the longest substring without repeating characters</li>
+            <li>Rotate an array by k positions</li>
+            <li>Implement string compression (e.g., "aaabbc" → "a3b2c1")</li>
+        </ol>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+
+    <script>
+        (function () {
+            const bg = document.getElementById('dynamic-bg');
+            const slides = [
+                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
+                { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
+                { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
+                { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
+            ];
+            function applySlide(i) {
+                const slide = slides[i];
+                bg.style.background = slide.bg;
+                document.documentElement.style.setProperty('--fg', slide.fg);
+                document.documentElement.style.setProperty('--link-color', slide.link);
+            }
+            applySlide(0);
+        })();
+    </script>
+</body>
+
+</html>

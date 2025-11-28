@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacks & Queues - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #7c2d12 0%, #ea580c 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .code-example {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+    <div class="page-header">
+        <h1>Stacks & Queues</h1>
+        <p>LIFO and FIFO data structures</p>
+    </div>
+    <div class="content-section">
+        <h2>Stack - Last In First Out (LIFO)</h2>
+        <p>A stack is a linear data structure that follows the LIFO principle. The last element added is the first one
+            to be removed, like a stack of plates.</p>
+        <h3>Basic Operations:</h3>
+        <ul>
+            <li><strong>Push:</strong> Add element to top - O(1)</li>
+            <li><strong>Pop:</strong> Remove element from top - O(1)</li>
+            <li><strong>Peek/Top:</strong> View top element - O(1)</li>
+            <li><strong>isEmpty:</strong> Check if stack is empty - O(1)</li>
+        </ul>
+        <div class="code-example">
+            <pre>
+// Stack implementation using array
+class Stack {
+    int top;
+    int arr[100];
+public:
+    Stack() { top = -1; }
+    
+    void push(int x) {
+        if (top >= 99) {
+            cout << "Stack Overflow";
+            return;
+        }
+        arr[++top] = x;
+    }
+    
+    int pop() {
+        if (top < 0) {
+            cout << "Stack Underflow";
+            return -1;
+        }
+        return arr[top--];
+    }
+    
+    int peek() {
+        return (top < 0) ? -1 : arr[top];
+    }
+    
+    bool isEmpty() {
+        return (top < 0);
+    }
+};
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Queue - First In First Out (FIFO)</h2>
+        <p>A queue follows the FIFO principle. The first element added is the first one to be removed, like a line of
+            people waiting.</p>
+        <h3>Basic Operations:</h3>
+        <ul>
+            <li><strong>Enqueue:</strong> Add element to rear - O(1)</li>
+            <li><strong>Dequeue:</strong> Remove element from front - O(1)</li>
+            <li><strong>Front:</strong> View front element - O(1)</li>
+            <li><strong>isEmpty:</strong> Check if queue is empty - O(1)</li>
+        </ul>
+        <div class="code-example">
+            <pre>
+// Queue implementation using array
+class Queue {
+    int front, rear, size;
+    int arr[100];
+public:
+    Queue() { front = rear = -1; size = 0; }
+    
+    void enqueue(int x) {
+        if (size >= 100) {
+            cout << "Queue Full";
+            return;
+        }
+        if (front == -1) front = 0;
+        arr[++rear] = x;
+        size++;
+    }
+    
+    int dequeue() {
+        if (size == 0) {
+            cout << "Queue Empty";
+            return -1;
+        }
+        int x = arr[front++];
+        size--;
+        if (size == 0) front = rear = -1;
+        return x;
+    }
+};
+</pre>
+        </div>
+    </div>
+    <div class="content-section">
+        <h2>Applications</h2>
+        <h3>Stack Applications:</h3>
+        <ul>
+            <li>Function call management (call stack)</li>
+            <li>Expression evaluation and syntax parsing</li>
+            <li>Undo/Redo operations in editors</li>
+            <li>Backtracking algorithms (DFS, maze solving)</li>
+            <li>Browser history (back button)</li>
+        </ul>
+        <h3>Queue Applications:</h3>
+        <ul>
+            <li>CPU scheduling and disk scheduling</li>
+            <li>Breadth-First Search (BFS)</li>
+            <li>Printer queue management</li>
+            <li>Handling requests in web servers</li>
+            <li>Call center phone systems</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Common Problems</h2>
+        <h3>1. Balanced Parentheses</h3>
+        <div class="code-example">
+            <pre>
+bool isBalanced(string s) {
+    stack&lt;char&gt; st;
+    for (char c : s) {
+        if (c == '(' || c == '{' || c == '[') {
+            st.push(c);
+        } else {
+            if (st.empty()) return false;
+            char top = st.top();
+            st.pop();
+            if ((c == ')' && top != '(') ||
+                (c == '}' && top != '{') ||
+                (c == ']' && top != '['))
+                return false;
+        }
+    }
+    return st.empty();
+}
+</pre>
+        </div>
+        <h3>2. Implement Queue using Stacks</h3>
+        <div class="code-example">
+            <pre>
+class QueueUsingStacks {
+    stack&lt;int&gt; s1, s2;
+public:
+    void enqueue(int x) {
+        s1.push(x);
+    }
+    
+    int dequeue() {
+        if (s2.empty()) {
+            while (!s1.empty()) {
+                s2.push(s1.top());
+                s1.pop();
+            }
+        }
+        if (s2.empty()) return -1;
+        int x = s2.top();
+        s2.pop();
+        return x;
+    }
+};
+</pre>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+    <script>(function () { const bg = document.getElementById('dynamic-bg'); const slides = [{ bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' }]; function applySlide(i) { const slide = slides[i]; bg.style.background = slide.bg; document.documentElement.style.setProperty('--fg', slide.fg); document.documentElement.style.setProperty('--link-color', slide.link); } applySlide(0); })();</script>
+</body>
+
+</html>

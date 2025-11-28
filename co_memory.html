@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Hierarchy - College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%);
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: var(--link-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dynamic-bg"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="College_Geeks.html">Home</a></li>
+            <li><a href="dsa.html">DSA</a></li>
+            <li><a href="computer_org.html">Computer Org</a></li>
+            <li><a href="compiler_design.html">Compiler Design</a></li>
+            <li><a href="toc.html">Theory of Comp</a></li>
+            <li><a href="ai.html">AI</a></li>
+            <li><a href="ml.html">Machine Learning</a></li>
+            <li><a href="dl.html">Deep Learning</a></li>
+        </ul>
+    </nav>
+    <div class="page-header">
+        <h1>Memory Hierarchy</h1>
+        <p>Balancing speed, cost, and capacity</p>
+    </div>
+    <div class="content-section">
+        <h2>The Memory Pyramid</h2>
+        <p>Computer memory is organized in a hierarchy from fastest/smallest to slowest/largest:</p>
+        <table>
+            <tr>
+                <th>Level</th>
+                <th>Type</th>
+                <th>Size</th>
+                <th>Access Time</th>
+                <th>Cost/GB</th>
+            </tr>
+            <tr>
+                <td>L0</td>
+                <td>Registers</td>
+                <td>~1 KB</td>
+                <td>~0.25 ns</td>
+                <td>Highest</td>
+            </tr>
+            <tr>
+                <td>L1</td>
+                <td>L1 Cache</td>
+                <td>~64 KB</td>
+                <td>~1 ns</td>
+                <td>Very High</td>
+            </tr>
+            <tr>
+                <td>L2</td>
+                <td>L2 Cache</td>
+                <td>~512 KB</td>
+                <td>~4 ns</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>L3</td>
+                <td>L3 Cache</td>
+                <td>~8 MB</td>
+                <td>~10 ns</td>
+                <td>Medium</td>
+            </tr>
+            <tr>
+                <td>L4</td>
+                <td>Main Memory (RAM)</td>
+                <td>8-64 GB</td>
+                <td>~100 ns</td>
+                <td>Low</td>
+            </tr>
+            <tr>
+                <td>L5</td>
+                <td>SSD</td>
+                <td>256 GB - 2 TB</td>
+                <td>~50 μs</td>
+                <td>Very Low</td>
+            </tr>
+            <tr>
+                <td>L6</td>
+                <td>HDD</td>
+                <td>1-10 TB</td>
+                <td>~5 ms</td>
+                <td>Lowest</td>
+            </tr>
+        </table>
+    </div>
+    <div class="content-section">
+        <h2>Cache Memory</h2>
+        <p>Small, fast memory between CPU and main memory. Exploits locality principles:</p>
+        <h3>Temporal Locality</h3>
+        <p>Recently accessed data is likely to be accessed again soon.</p>
+        <h3>Spatial Locality</h3>
+        <p>Data near recently accessed data is likely to be accessed soon.</p>
+        <h3>Cache Organization:</h3>
+        <ul>
+            <li><strong>Direct Mapped:</strong> Each memory block maps to exactly one cache line</li>
+            <li><strong>Fully Associative:</strong> Any memory block can go to any cache line</li>
+            <li><strong>Set Associative:</strong> Compromise between the two</li>
+        </ul>
+        <h3>Cache Performance:</h3>
+        <p><strong>Hit Rate:</strong> Percentage of memory accesses found in cache</p>
+        <p><strong>Miss Rate:</strong> 1 - Hit Rate</p>
+        <p><strong>Average Access Time = Hit Time + (Miss Rate × Miss Penalty)</strong></p>
+    </div>
+    <div class="content-section">
+        <h2>Virtual Memory</h2>
+        <p>Technique that allows execution of processes that may not be completely in physical memory. Provides illusion
+            of large address space.</p>
+        <h3>Benefits:</h3>
+        <ul>
+            <li>Allows programs larger than physical memory</li>
+            <li>Provides memory protection between processes</li>
+            <li>Enables efficient sharing of memory</li>
+            <li>Simplifies program loading</li>
+        </ul>
+        <h3>Paging:</h3>
+        <p>Memory divided into fixed-size blocks called pages (typically 4KB).</p>
+        <ul>
+            <li><strong>Page Table:</strong> Maps virtual addresses to physical addresses</li>
+            <li><strong>Page Fault:</strong> Occurs when requested page not in RAM</li>
+            <li><strong>TLB (Translation Lookaside Buffer):</strong> Cache for page table entries</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Memory Access Patterns</h2>
+        <h3>Sequential Access:</h3>
+        <p>Accessing memory locations in order. Best cache performance.</p>
+        <h3>Random Access:</h3>
+        <p>Accessing memory locations in unpredictable order. Poor cache performance.</p>
+        <h3>Optimization Techniques:</h3>
+        <ul>
+            <li><strong>Loop Tiling:</strong> Breaking loops into smaller chunks</li>
+            <li><strong>Data Alignment:</strong> Aligning data to cache line boundaries</li>
+            <li><strong>Prefetching:</strong> Loading data before it's needed</li>
+            <li><strong>Blocking:</strong> Organizing data to fit in cache</li>
+        </ul>
+    </div>
+    <div class="content-section">
+        <h2>Applications</h2>
+        <ul>
+            <li><strong>Database Systems:</strong> Buffer pool management</li>
+            <li><strong>Operating Systems:</strong> Page replacement algorithms</li>
+            <li><strong>Gaming:</strong> Texture and asset streaming</li>
+            <li><strong>Scientific Computing:</strong> Optimizing matrix operations</li>
+            <li><strong>Web Browsers:</strong> Caching web resources</li>
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+    <script>(function () { const bg = document.getElementById('dynamic-bg'); const slides = [{ bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' }]; function applySlide(i) { const slide = slides[i]; bg.style.background = slide.bg; document.documentElement.style.setProperty('--fg', slide.fg); document.documentElement.style.setProperty('--link-color', slide.link); } applySlide(0); })();</script>
+</body>
+
+</html>
