@@ -1,0 +1,668 @@
+:root {
+    --fg: #0f172a;
+    /* content foreground (will be updated by JS per slide) */
+    --link-color: #0b1220;
+    /* navbar link color (updated by JS) */
+}
+
+/* ensure page fills viewport and no default margins */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: var(--fg);
+}
+
+/* full-screen background layer behind everything */
+#dynamic-bg {
+    position: fixed;
+    inset: 0;
+    /* top:0; right:0; bottom:0; left:0; */
+    /* initial light gradient */
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background 900ms ease, opacity 600ms ease;
+    z-index: -1000;
+    pointer-events: none;
+    /* let clicks pass through */
+    filter: saturate(1.02) contrast(0.98);
+}
+
+/* make page content sit above the background */
+.head,
+.cont,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Updated navbar styles for light backgrounds (translucent) */
+.navbar {
+    max-width: 1000px;
+    margin: 8px auto 24px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(6px) saturate(1.05);
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(16, 24, 40, 0.06);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.navbar li {
+    margin: 0;
+}
+
+/* links use a CSS variable so JS can switch them for contrast */
+.navbar a {
+    display: inline-block;
+    padding: 10px 14px;
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease;
+    box-sizing: border-box;
+}
+
+.navbar a:hover {
+    background-color: rgba(15, 23, 42, 0.06);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 24px rgba(16, 24, 40, 0.08);
+}
+
+.navbar a:active {
+    transform: translateY(-1px) scale(0.99);
+}
+
+/* small-screen adjustments */
+@media (max-width: 640px) {
+    .navbar {
+        padding: 8px;
+    }
+
+    .navbar a {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .heading {
+        font-size: 20px;
+    }
+}
+
+/* container that wraps heading + navbar */
+.head {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 16px;
+    /* horizontal padding so content doesn't touch edges on small screens */
+    box-sizing: border-box;
+}
+
+/* css for heading (now fills the full width of .head). color uses var so JS can flip for each slide */
+.heading {
+    width: 100%;
+    margin: 0 0 12px;
+    padding: 12px 20px;
+    /* reduced to fit logo */
+    text-align: center;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.62));
+    color: var(--fg);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(14, 30, 60, 0.08), inset 0 -2px 8px rgba(255, 255, 255, 0.35);
+    font-size: clamp(1.6rem, 3vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: visible;
+    transition: transform .18s ease, box-shadow .18s ease;
+    border: 1px solid rgba(15, 23, 42, 0.05);
+    box-sizing: border-box;
+
+    /* layout for logo + text */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+/* logo image next to heading text */
+.heading .logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(14, 30, 60, 0.12);
+    flex-shrink: 0;
+}
+
+/* colorful clipped text accent for part of the heading */
+.heading .title-accent {
+    background: linear-gradient(90deg, #ff7a59, #ff2d55);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.heading .sub {
+    font-size: 0.46em;
+    margin-left: 8px;
+    vertical-align: super;
+    color: rgba(15, 23, 42, 0.6);
+    font-weight: 700;
+}
+
+/* underline bar */
+.heading::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ffd2c2, #ff9aa0);
+    box-shadow: 0 8px 24px rgba(255, 90, 90, 0.12);
+    transition: width .30s ease, opacity .2s ease;
+    opacity: 0.95;
+}
+
+.heading:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 48px rgba(14, 30, 60, 0.12);
+}
+
+.heading:hover::after {
+    width: 80%;
+}
+
+/* subtle shimmer animation */
+.heading::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
+    transform: skewX(-20deg);
+    border-radius: 12px;
+    pointer-events: none;
+    opacity: 0.7;
+    animation: shimmer 3.2s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -50%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+
+/* main content heading inherits var(--fg) too */
+.cont h1 {
+    color: var(--fg);
+    text-align: center;
+    margin-top: 36px;
+}
+
+/* course tabs (attention-grabbing) */
+.course-tabs {
+    max-width: 1000px;
+    margin: 18px auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.course-tab {
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--link-color);
+    transition: transform .16s ease, box-shadow .16s ease, background .16s ease, color .16s ease;
+    box-shadow: 0 4px 12px rgba(16, 24, 40, 0.04);
+}
+
+.course-tab:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(16, 24, 40, 0.08);
+}
+
+.course-tab.active {
+    background: linear-gradient(90deg, #ffffff, #f3f4f6);
+    color: var(--fg);
+    box-shadow: 0 14px 40px rgba(14, 30, 60, 0.10);
+    transform: translateY(-6px) scale(1.02);
+}
+
+/* add symbols to section headings */
+.course-section h2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 6px;
+}
+
+.course-section h2::before {
+    content: "•";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 18px;
+    flex: 0 0 40px;
+    background: linear-gradient(135deg, #9ca3ff, #7c3aed);
+    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.14);
+}
+
+/* individual icons per section */
+#dsa h2::before {
+    content: "📚";
+    background: linear-gradient(135deg, #ff9aa0, #ff6b6b);
+}
+
+#compiler h2::before {
+    content: "🔧";
+    background: linear-gradient(135deg, #ffd87a, #ffb84d);
+}
+
+#toc h2::before {
+    content: "📐";
+    background: linear-gradient(135deg, #9be7ff, #47c4ff);
+}
+
+#ai h2::before {
+    content: "🤖";
+    background: linear-gradient(135deg, #c7f9cc, #7ee787);
+}
+
+/* make topic cards more punchy */
+.topic {
+    padding: 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(250, 250, 250, 0.9));
+    border-left: 6px solid rgba(124, 58, 237, 0.12);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(16, 24, 40, 0.04);
+    transition: transform .18s ease, box-shadow .18s ease, border-left-color .18s ease;
+}
+
+.topic:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 46px rgba(14, 30, 60, 0.10);
+    border-left-color: rgba(124, 58, 237, 0.26);
+}
+
+.topic h3 {
+    color: var(--fg);
+    margin-bottom: 12px;
+}
+
+.topic p {
+    color: var(--fg);
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.topic-link {
+    display: inline-block;
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 0;
+    transition: opacity 0.2s ease;
+}
+
+.topic-link:hover {
+    opacity: 0.8;
+}
+
+/* Add this CSS in your style section */
+.sliding-message {
+    width: 100%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 0;
+    margin: 8px 0;
+    border-radius: 6px;
+}
+
+.sliding-message p {
+    color: var(--fg);
+    font-size: 1.2rem;
+    font-weight: 500;
+    white-space: nowrap;
+    margin: 0;
+    animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@media (max-width: 768px) {
+    .course-section {
+        margin: 16px;
+        padding: 16px;
+    }
+
+    .course-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Login Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login-form button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+
+    .course-section h2 {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding-left: 6px;
+    }
+
+    .course-section h2::before {
+        content: "•";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 18px;
+        flex: 0 0 40px;
+        background: linear-gradient(135deg, #9ca3ff, #7c3aed);
+        box-shadow: 0 6px 18px rgba(124, 58, 237, 0.14);
+    }
+
+    /* individual icons per section */
+    #dsa h2::before {
+        content: "📚";
+        background: linear-gradient(135deg, #ff9aa0, #ff6b6b);
+    }
+
+    #compiler h2::before {
+        content: "🔧";
+        background: linear-gradient(135deg, #ffd87a, #ffb84d);
+    }
+
+    #toc h2::before {
+        content: "📐";
+        background: linear-gradient(135deg, #9be7ff, #47c4ff);
+    }
+
+    #ai h2::before {
+        content: "🤖";
+        background: linear-gradient(135deg, #c7f9cc, #7ee787);
+    }
+
+    /* make topic cards more punchy */
+    .topic {
+        padding: 20px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(250, 250, 250, 0.9));
+        border-left: 6px solid rgba(124, 58, 237, 0.12);
+        border-radius: 8px;
+        box-shadow: 0 6px 20px rgba(16, 24, 40, 0.04);
+        transition: transform .18s ease, box-shadow .18s ease, border-left-color .18s ease;
+    }
+
+    .topic:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 46px rgba(14, 30, 60, 0.10);
+        border-left-color: rgba(124, 58, 237, 0.26);
+    }
+
+    .topic h3 {
+        color: var(--fg);
+        margin-bottom: 12px;
+    }
+
+    .topic p {
+        color: var(--fg);
+        opacity: 0.9;
+        line-height: 1.6;
+        margin-bottom: 16px;
+    }
+
+    .topic-link {
+        display: inline-block;
+        color: var(--link-color);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 8px 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .topic-link:hover {
+        opacity: 0.8;
+    }
+
+    /* Add this CSS in your style section */
+    .sliding-message {
+        width: 100%;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 10px 0;
+        margin: 8px 0;
+        border-radius: 6px;
+    }
+
+    .sliding-message p {
+        color: var(--fg);
+        font-size: 1.2rem;
+        font-weight: 500;
+        white-space: nowrap;
+        margin: 0;
+        animation: slide 20s linear infinite;
+    }
+
+    @keyframes slide {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .course-section {
+            margin: 16px;
+            padding: 16px;
+        }
+
+        .course-content {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Login Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        position: relative;
+        animation: modalFadeIn 0.3s;
+    }
+
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .login-form input {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .login-form button {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .login-form button:hover {
+        background-color: #45a049;
+    }
+}

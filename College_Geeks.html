@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Geeks</title>
+    <link rel="shortcut icon" href="C_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- background slideshow element (keeps z-index: -1000) -->
+    <div id="dynamic-bg" aria-hidden="true"></div>
+
+    <div class="head">
+        <h1 class="heading">
+            <img src="C_icon.png" alt="College Geeks logo" class="logo">
+            <span class="title-accent">COLLEGE GEEKS !!!</span><span class="sub"></span>
+        </h1>
+
+        <!-- Add this right after the heading in the .head div -->
+        <div class="sliding-message">
+            <p>Welcome Students! Start Your Learning Journey With Us...</p>
+        </div>
+
+        <nav class="navbar" aria-label="Main navigation">
+            <ul>
+                <li><a href="College_Geeks.html">Home</a></li>
+                <li><a href="1.html" target="_blank">DSA</a></li>
+                <li><a href="cover.html" target="_blank">Computer Organisation</a></li>
+                <li><a href="cover.html" target="_blank">Compiler Design</a></li>
+                <li><a href="cover.html" target="_blank">Theory of Computation</a></li>
+                <li><a href="cover.html" target="_blank">Artificial Intelligence</a></li>
+                <li><a href="cover.html" target="_blank">Machine Learning</a></li>
+                <li><a href="cover.html" target="_blank">Deep Learning</a></li>
+                <li><a href="#" id="login-btn">Login</a></li>
+                <li><span id="user-display"
+                        style="display:none; padding: 10px 14px; font-weight: 600; color: var(--link-color);"></span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Mid Section: Course Tabs -->
+    <div class="mid">
+        <div class="course-tabs">
+            <div class="course-tab active" onclick="openTab('dsa')">DSA</div>
+            <div class="course-tab" onclick="openTab('co')">Computer Org</div>
+            <div class="course-tab" onclick="openTab('compiler')">Compiler Design</div>
+            <div class="course-tab" onclick="openTab('toc')">Theory of Comp</div>
+            <div class="course-tab" onclick="openTab('ai')">AI</div>
+            <div class="course-tab" onclick="openTab('ml')">Machine Learning</div>
+            <div class="course-tab" onclick="openTab('dl')">Deep Learning</div>
+        </div>
+    </div>
+
+    <div class="cont">
+        <h1>Welcome to the Education Site for College Students</h1>
+
+        <!-- DSA Section -->
+        <section id="dsa" class="course-section">
+            <h2>Data Structures & Algorithms</h2>
+            <div class="course-content">
+                <div class="topic">
+                    <h3>Arrays & Strings</h3>
+                    <p>Fundamental storage structures. Learn about contiguous memory allocation, string manipulation,
+                        sliding window techniques, and two-pointer approaches.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Linked Lists</h3>
+                    <p>Dynamic data structures. Master singly and doubly linked lists, circular lists, and efficient
+                        node manipulation for memory management.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Stacks & Queues</h3>
+                    <p>LIFO and FIFO data structures. Explore applications in expression evaluation, backtracking, and
+                        process scheduling.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Trees & Graphs</h3>
+                    <p>Hierarchical and network data models. Dive into BSTs, AVL trees, heaps, BFS, DFS, and shortest
+                        path algorithms.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Dynamic Programming</h3>
+                    <p>Optimization techniques. Solve complex problems by breaking them down into simpler subproblems
+                        and storing results.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Computer Organisation Section -->
+        <section id="co" class="course-section" style="display:none;">
+            <h2>Computer Organisation</h2>
+            <div class="course-content">
+                <div class="topic">
+                    <h3>Data Representation</h3>
+                    <p>Understanding how computers store data. Binary, hexadecimal systems, floating-point arithmetic,
+                        and character encoding standards.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Instruction Set Architecture</h3>
+                    <p>The interface between hardware and software. Learn about addressing modes, instruction formats,
+                        and assembly language.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Memory Hierarchy</h3>
+                    <p>Optimizing storage access. Cache memory, main memory (RAM), virtual memory, and paging
+                        techniques.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Pipelining</h3>
+                    <p>Improving instruction throughput. Instruction fetching, decoding, execution, and handling hazards
+                        in pipelined processors.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>I/O Systems</h3>
+                    <p>Connecting peripherals. Interrupts, DMA (Direct Memory Access), and bus architectures for
+                        efficient input/output.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compiler Design Section -->
+        <section id="compiler" class="course-section" style="display:none;">
+            <h2>Compiler Design</h2>
+            <div class="course-content">
+                <div class="topic">
+                    <h3>Lexical Analysis</h3>
+                    <p>The first phase of compilation. Tokenizing source code using regular expressions and finite
+                        automata.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Syntax Analysis</h3>
+                    <p>Validating code structure. Context-free grammars, top-down (LL) and bottom-up (LR) parsing
+                        techniques.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Semantic Analysis</h3>
+                    <p>Ensuring meaning. Type checking, scope resolution, and symbol table management.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Intermediate Code Generation</h3>
+                    <p>Platform independence. Three-address code, quadruples, and triples for portable code
+                        representation.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Code Optimization</h3>
+                    <p>Improving performance. Dead code elimination, loop optimization, and register allocation.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Theory of Computation Section -->
+        <section id="toc" class="course-section" style="display:none;">
+            <h2>Theory of Computation</h2>
+            <div class="course-content">
+                <div class="topic">
+                    <h3>Finite Automata</h3>
+                    <p>Modeling simple machines. Deterministic (DFA) and Non-deterministic (NFA) finite automata and
+                        regular languages.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Context-Free Grammars</h3>
+                    <p>Describing language syntax. Derivations, parse trees, and ambiguity in formal grammars.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Pushdown Automata</h3>
+                    <p>Machines with memory. Stack-based automata for recognizing context-free languages.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Turing Machines</h3>
+                    <p>The universal model of computation. Decidability, halting problem, and the limits of what can be
+                        computed.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Complexity Theory</h3>
+                    <p>Classifying problems. P vs NP, NP-completeness, and analyzing algorithm efficiency.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artificial Intelligence Section -->
+        <section id="ai" class="course-section" style="display:none;">
+            <h2>Artificial Intelligence</h2>
+            <div class="course-content">
+                <div class="topic">
+                    <h3>Search Algorithms</h3>
+                    <p>Problem solving agents. Uninformed search (BFS, DFS) and informed search (A*, Heuristics).</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Knowledge Representation</h3>
+                    <p>Structuring information. Propositional logic, first-order logic, and semantic networks.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Probabilistic Reasoning</h3>
+                    <p>Handling uncertainty. Bayesian networks, Markov models, and decision making under uncertainty.
+                    </p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Natural Language Processing</h3>
+                    <p>Human-computer interaction. Syntax analysis, semantic understanding, and language generation.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Robotics</h3>
+                    <p>Physical agents. Perception, motion planning, and control systems in the real world.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Machine Learning Section -->
+        <section id="ml" class="course-section" style="display:none;">
+            <h2>Machine Learning</h2>
+            <div class="course-content">
+                <div class="topic">
+                    <h3>Supervised Learning</h3>
+                    <p>Learning from labeled data. Regression, linear models, and classification algorithms.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Unsupervised Learning</h3>
+                    <p>Finding patterns in unlabeled data. Clustering (K-Means) and dimensionality reduction (PCA).</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Reinforcement Learning</h3>
+                    <p>Learning through interaction. Agents, environments, rewards, and Q-learning policies.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Neural Networks</h3>
+                    <p>Bio-inspired learning. Perceptrons, multi-layer perceptrons, and backpropagation.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Model Evaluation</h3>
+                    <p>Measuring performance. Cross-validation, confusion matrices, precision, recall, and F1 score.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deep Learning Section -->
+        <section id="dl" class="course-section" style="display:none;">
+            <h2>Deep Learning</h2>
+            <div class="course-content">
+                <div class="topic">
+                    <h3>Convolutional Neural Networks</h3>
+                    <p>Visual recognition. Filters, pooling layers, and architectures like CNNs for image processing.
+                    </p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Recurrent Neural Networks</h3>
+                    <p>Sequence modeling. LSTMs and GRUs for time-series data and natural language.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Transformers</h3>
+                    <p>Attention mechanisms. The architecture behind modern NLP models like BERT and GPT.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Generative Adversarial Networks</h3>
+                    <p>Creative AI. Generator and discriminator networks for creating realistic synthetic data.</p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+                <div class="topic">
+                    <h3>Backpropagation</h3>
+                    <p>Training deep networks. The calculus behind gradient descent and weight updates in deep layers.
+                    </p>
+                    <a href="#" class="topic-link">Learn More →</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 College Geeks. All rights reserved.</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="text-align: center; color: #333;">Student Login</h2>
+            <div class="login-form">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+                <button type="submit" id="submitLogin">Login</button>
+                <p id="login-error" style="color: red; display: none; text-align: center;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const bg = document.getElementById('dynamic-bg');
+
+            // slides -> pastel/light gradients + recommended foreground and link colors for contrast
+            const slides = [
+                {
+                    bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', // soft peach
+                    fg: '#0f172a',      // dark slate for text
+                    link: '#0b1220'
+                },
+                {
+                    bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', // mint
+                    fg: '#052e18',
+                    link: '#0a341a'
+                },
+                {
+                    bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', // lavender
+                    fg: '#1e1b4b',
+                    link: '#241f63'
+                },
+                {
+                    bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', // pale blue
+                    fg: '#022c43',
+                    link: '#04263b'
+                },
+                {
+                    bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', // lemony
+                    fg: '#2b2a0a',
+                    link: '#2f2b0f'
+                }
+            ];
+
+            let current = 0;
+
+            // apply initial slide values to CSS vars / background
+            function applySlide(i) {
+                const slide = slides[i];
+                bg.style.background = slide.bg;
+                // update CSS variables for foreground and link color
+                document.documentElement.style.setProperty('--fg', slide.fg);
+                document.documentElement.style.setProperty('--link-color', slide.link);
+            }
+
+            applySlide(current);
+
+            function changeBackground() {
+                current = (current + 1) % slides.length;
+                // smooth crossfade: fade out, change, fade in
+                bg.style.opacity = '0';
+                setTimeout(() => {
+                    applySlide(current);
+                    bg.style.opacity = '1';
+                }, 380); // slightly less than transition duration to keep it smooth
+            }
+
+            // change every 5s
+            const interval = 5000;
+            setInterval(changeBackground, interval);
+
+            // Tab Switching Logic
+            window.openTab = function (tabName) {
+                // Hide all sections
+                const sections = document.getElementsByClassName("course-section");
+                for (let i = 0; i < sections.length; i++) {
+                    sections[i].style.display = "none";
+                }
+
+                // Remove active class from all tabs
+                const tabs = document.getElementsByClassName("course-tab");
+                for (let i = 0; i < tabs.length; i++) {
+                    tabs[i].classList.remove("active");
+                }
+
+                // Show the specific tab content
+                document.getElementById(tabName).style.display = "block";
+
+                // Add active class to the button that opened the tab
+                const activeTab = document.querySelector(`.course-tab[onclick="openTab('${tabName}')"]`);
+                if (activeTab) {
+                    activeTab.classList.add("active");
+                }
+            }
+
+            // Login Logic
+            const modal = document.getElementById("loginModal");
+            const btn = document.getElementById("login-btn");
+            const span = document.getElementsByClassName("close")[0];
+            const loginSubmit = document.getElementById("submitLogin");
+            const loginError = document.getElementById("login-error");
+            const userDisplay = document.getElementById("user-display");
+
+            btn.onclick = function (e) {
+                e.preventDefault();
+                modal.style.display = "block";
+            }
+
+            span.onclick = function () {
+                modal.style.display = "none";
+                loginError.style.display = "none";
+            }
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    loginError.style.display = "none";
+                }
+            }
+
+            loginSubmit.onclick = async function () {
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("password").value;
+
+                try {
+                    const response = await fetch('/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username, password })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        modal.style.display = "none";
+                        btn.style.display = "none";
+                        userDisplay.style.display = "inline-block";
+                        userDisplay.textContent = "Welcome, " + data.username;
+                        alert("Login Successful!");
+                    } else {
+                        loginError.textContent = data.message;
+                        loginError.style.display = "block";
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    loginError.textContent = "Server error. Is the backend running?";
+                    loginError.style.display = "block";
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
