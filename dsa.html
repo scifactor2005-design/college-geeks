@@ -90,79 +90,33 @@
 
     <div class="content-section">
         <h2>Introduction</h2>
-        <p>Data Structures and Algorithms (DSA) is the core of computer science. It deals with how data is organized,
-            stored, and processed efficiently. Understanding DSA is crucial for writing optimized code and solving
-            complex computational problems.</p>
-        <img src="dsa_diagram.png" alt="DSA Overview Diagram">
-    </div>
-
-    <div class="content-section">
-        <h2>Arrays & Strings</h2>
-        <p>Arrays are the simplest data structure, storing elements in contiguous memory locations. Strings are
-            sequences of characters. Mastering these involves understanding memory management, indexing, and common
-            algorithms like sliding window and two-pointer techniques.</p>
-        <ul>
-            <li><strong>Time Complexity:</strong> Access O(1), Search O(n), Insertion/Deletion O(n)</li>
-            <li><strong>Applications:</strong> Storing data, text processing, buffering.</li>
-        </ul>
-    </div>
-
-    <div class="content-section">
-        <h2>Linked Lists</h2>
-        <p>A linked list is a linear data structure where elements are stored in nodes, and each node points to the next
-            one. Unlike arrays, they do not require contiguous memory.</p>
-        <ul>
-            <li><strong>Types:</strong> Singly Linked List, Doubly Linked List, Circular Linked List.</li>
-            <li><strong>Advantages:</strong> Dynamic size, easy insertion/deletion.</li>
-        </ul>
-    </div>
-
-    <div class="content-section">
-        <h2>Stacks & Queues</h2>
-        <p>Stacks follow the LIFO (Last In First Out) principle, while Queues follow FIFO (First In First Out). These
-            are essential for managing function calls, expression evaluation, and scheduling tasks.</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Trees & Graphs</h2>
-        <p>Non-linear data structures that represent hierarchical (Trees) and networked (Graphs) relationships. Key
-            concepts include Binary Search Trees (BST), AVL Trees, Heaps, BFS, and DFS.</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Dynamic Programming</h2>
-        <p>A method for solving complex problems by breaking them down into simpler subproblems. It is used in
-            optimization problems like the Knapsack problem, Fibonacci sequence, and shortest path algorithms.</p>
-    </div>
-
-    <footer>
         <p>&copy; 2024 College Geeks. All rights reserved.</p>
-    </footer>
+        </footer>
 
-    <script>
-        // Reuse the background logic from the main page if needed, or keep it simple
-        (function () {
-            const bg = document.getElementById('dynamic-bg');
-            // Simple static background or reuse the script if we want the slideshow
-            const slides = [
-                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
-                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
-                { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
-                { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
-                { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
-            ];
-            let current = 0;
-            function applySlide(i) {
-                const slide = slides[i];
-                bg.style.background = slide.bg;
-                document.documentElement.style.setProperty('--fg', slide.fg);
-                document.documentElement.style.setProperty('--link-color', slide.link);
-            }
-            applySlide(0);
+        <script>
+            // Reuse the background logic from the main page if needed, or keep it simple
+            (function () {
+                const bg = document.getElementById('dynamic-bg');
+                // Simple static background or reuse the script if we want the slideshow
+                const slides = [
+                    { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                    { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
+                    { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
+                    { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
+                    { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
+                ];
+                let current = 0;
+                function applySlide(i) {
+                    const slide = slides[i];
+                    bg.style.background = slide.bg;
+                    document.documentElement.style.setProperty('--fg', slide.fg);
+                    document.documentElement.style.setProperty('--link-color', slide.link);
+                }
+                applySlide(0);
 
-            // Optional: Add slideshow logic here if desired
-        })();
-    </script>
+                // Optional: Add slideshow logic here if desired
+            })();
+        </script>
 </body>
 
 </html>

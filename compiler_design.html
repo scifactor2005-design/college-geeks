@@ -74,66 +74,29 @@
     </div>
 
     <div class="content-section">
-        <h2>Introduction</h2>
-        <p>Compiler Design explores the theory and practice of building compilers. A compiler translates source code
-            written in a high-level language into machine code that can be executed by a computer.</p>
-        <img src="compiler_diagram.png" alt="Phases of a Compiler Diagram">
-    </div>
-
-    <div class="content-section">
-        <h2>Lexical Analysis</h2>
-        <p>The first phase of a compiler. It reads the source code as a stream of characters and groups them into
-            meaningful sequences called lexemes or tokens. Tools like Lex are used here.</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Syntax Analysis</h2>
-        <p>Also known as parsing. This phase checks if the generated tokens form a valid structure according to the
-            grammar of the language. It produces a parse tree or syntax tree.</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Semantic Analysis</h2>
-        <p>This phase checks for semantic errors (e.g., type mismatch, undeclared variables) and gathers type
-            information for subsequent phases.</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Intermediate Code Generation</h2>
-        <p>The compiler generates an intermediate representation of the source code, which is machine-independent.
-            Common forms include Three-Address Code (TAC).</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Code Optimization</h2>
-        <p>This phase attempts to improve the intermediate code so that the resulting machine code runs faster or
-            consumes less memory, without changing the output.</p>
-    </div>
-
-    <footer>
         <p>&copy; 2024 College Geeks. All rights reserved.</p>
-    </footer>
+        </footer>
 
-    <script>
-        (function () {
-            const bg = document.getElementById('dynamic-bg');
-            const slides = [
-                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
-                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
-                { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
-                { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
-                { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
-            ];
-            let current = 0;
-            function applySlide(i) {
-                const slide = slides[i];
-                bg.style.background = slide.bg;
-                document.documentElement.style.setProperty('--fg', slide.fg);
-                document.documentElement.style.setProperty('--link-color', slide.link);
-            }
-            applySlide(2);
-        })();
-    </script>
+        <script>
+            (function () {
+                const bg = document.getElementById('dynamic-bg');
+                const slides = [
+                    { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                    { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
+                    { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
+                    { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
+                    { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
+                ];
+                let current = 0;
+                function applySlide(i) {
+                    const slide = slides[i];
+                    bg.style.background = slide.bg;
+                    document.documentElement.style.setProperty('--fg', slide.fg);
+                    document.documentElement.style.setProperty('--link-color', slide.link);
+                }
+                applySlide(2);
+            })();
+        </script>
 </body>
 
 </html>

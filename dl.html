@@ -98,67 +98,29 @@
     </div>
 
     <div class="content-section">
-        <h2>Introduction</h2>
-        <p>Deep Learning is a specialized subset of Machine Learning inspired by the structure of the human brain. It
-            uses multi-layered artificial neural networks to learn from vast amounts of data.</p>
-        <img src="dl_diagram.svg" alt="Neural Network Architecture Diagram">
-    </div>
-
-    <div class="content-section">
-        <h2>Convolutional Neural Networks (CNNs)</h2>
-        <p>CNNs are designed to process structured grid data, such as images. They use convolutional layers to
-            automatically detect features like edges, textures, and shapes, making them ideal for computer vision.</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Recurrent Neural Networks (RNNs)</h2>
-        <p>RNNs are designed for sequential data, such as time series or natural language. They have a "memory" that
-            captures information about what has been calculated so far.</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Transformers</h2>
-        <p>Transformers have revolutionized NLP. They use self-attention mechanisms to weigh the significance of
-            different parts of the input data, allowing for parallel processing and handling long-range dependencies.
-        </p>
-    </div>
-
-    <div class="content-section">
-        <h2>Generative Adversarial Networks (GANs)</h2>
-        <p>GANs consist of two networks—a generator and a discriminator—competing against each other. They are used to
-            generate realistic synthetic data, such as images, music, and text.</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Backpropagation</h2>
-        <p>The core algorithm for training neural networks. It calculates the gradient of the loss function with respect
-            to the weights, allowing the network to update its parameters and minimize error.</p>
-    </div>
-
-    <footer>
         <p>&copy; 2024 College Geeks. All rights reserved.</p>
-    </footer>
+        </footer>
 
-    <script>
-        (function () {
-            const bg = document.getElementById('dynamic-bg');
-            const slides = [
-                { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
-                { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
-                { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
-                { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
-                { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
-            ];
-            let current = 0;
-            function applySlide(i) {
-                const slide = slides[i];
-                bg.style.background = slide.bg;
-                document.documentElement.style.setProperty('--fg', slide.fg);
-                document.documentElement.style.setProperty('--link-color', slide.link);
-            }
-            applySlide(2); // Lavender theme fits well
-        })();
-    </script>
+        <script>
+            (function () {
+                const bg = document.getElementById('dynamic-bg');
+                const slides = [
+                    { bg: 'linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%)', fg: '#0f172a', link: '#0b1220' },
+                    { bg: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', fg: '#052e18', link: '#0a341a' },
+                    { bg: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)', fg: '#1e1b4b', link: '#241f63' },
+                    { bg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', fg: '#022c43', link: '#04263b' },
+                    { bg: 'linear-gradient(135deg, #fffbe6 0%, #fff4cc 100%)', fg: '#2b2a0a', link: '#2f2b0f' }
+                ];
+                let current = 0;
+                function applySlide(i) {
+                    const slide = slides[i];
+                    bg.style.background = slide.bg;
+                    document.documentElement.style.setProperty('--fg', slide.fg);
+                    document.documentElement.style.setProperty('--link-color', slide.link);
+                }
+                applySlide(2); // Lavender theme fits well
+            })();
+        </script>
 </body>
 
 </html>
