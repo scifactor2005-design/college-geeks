@@ -10,7 +10,22 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+
+// Security middleware to block access to sensitive files
+app.use((req, res, next) => {
+    const sensitiveFiles = ['/users.json', '/server.js', '/package.json'];
+    if (sensitiveFiles.includes(req.path)) {
+        return res.status(403).send('Forbidden');
+    }
+    next();
+});
+
 app.use(express.static(path.join(__dirname))); // Serve static files from current directory
+
+// Serve the main page on root
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'College_Geeks.html'));
+});
 
 // Login Endpoint
 app.post('/login', (req, res) => {
